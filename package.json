@@ -1,0 +1,8 @@
+{
+  "name": "claudiu-angheloni-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "node serve.js"
+  }
+}

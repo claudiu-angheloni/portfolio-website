@@ -1,0 +1,254 @@
+{
+  "continents": [{
+      "id": "africa",
+      "name": "Africa",
+      "lat": 12.126428,
+      "lon": 17.346138,
+      "categories": [{
+        "id": "african-days",
+        "name": "African Days"
+      }]
+    },
+    {
+      "id": "europe",
+      "name": "Europe",
+      "lat": 49.825929,
+      "lon": 15.285491,
+      "categories": [{
+        "id": "euro-tales",
+        "name": "Euro Tales"
+      }]
+    },
+    {
+      "id": "asia",
+      "name": "Asia",
+      "lat": 34.957770,
+      "lon": 95.349693,
+      "categories": []
+    },
+    {
+      "id": "north-america",
+      "name": "North America",
+      "lat": 38.802659,
+      "lon": -95.827580,
+      "categories": [{
+          "id": "new-york-streets",
+          "name": "New York Streets"
+        },
+        {
+          "id": "american-lives",
+          "name": "American Lives"
+        }, {
+          "id": "hollywood-lights",
+          "name": "Hollywood Lights"
+        }
+      ]
+    },
+    {
+      "id": "south-america",
+      "name": "South America",
+      "lat": -14.203990,
+      "lon": -57.243591,
+      "categories": []
+    },
+    {
+      "id": "antarctica",
+      "name": "Antarctica",
+      "lat": -84.154507,
+      "lon": 69.406805,
+      "categories": []
+    },
+    {
+      "id": "australia",
+      "name": "Australia",
+      "lat": -24.141837,
+      "lon": 134.705852,
+      "categories": []
+    }
+  ],
+
+  "story": [
+    "szmolinsky",
+    "nie-patrz-wstecz",
+    "drik-nu-agnes",
+    "goodbye-chicken-farewell-goat",
+    "big-man",
+    "she-waits-in-the-restless-horizon",
+    "linus",
+    "the-girl-is-in-trouble",
+    "meditations-a-love-story",
+    "the-boundary",
+    "broken-arrows",
+    "luce",
+    "the-cloverfield-paradox"
+  ],
+
+  "projects": [
+
+    {
+      "id": "drik-nu-agnes",
+      "title": "Drik Nu Agnes",
+      "info": "2011",
+      "location": "Denmark",
+      "lat": 55.678991,
+      "lon": 12.575600,
+      "category": "euro-tales",
+      "desc": "Agnes desperately needs a drink.",
+      "video": "https://player.vimeo.com/video/44143552"
+    },
+
+    {
+      "id": "nie-patrz-wstecz",
+      "title": "Nie Patrz Wstecz",
+      "info": "2008",
+      "location": "Poland",
+      "lat": 51.756654,
+      "lon": 21.017532,
+      "category": "euro-tales",
+      "desc": "A young man in Lodz, Poland chases the dream of his love as time runs out.",
+      "video": "https://player.vimeo.com/video/126390032"
+    },
+
+    {
+      "id": "szmolinsky",
+      "title": "Szmolinsky",
+      "info": "2007",
+      "location": "Germany",
+      "lat": 52.836210,
+      "lon": 13.789094,
+      "category": "euro-tales",
+      "desc": "When Karl Szmolinsky is contacted by the North Korean government to send his &quot;German Giants&quot; to Pyong Yang, what happens next is beyond his wildest imagination.",
+      "video": "https://player.vimeo.com/video/126411007"
+    },
+
+
+
+
+    {
+      "id": "big-man",
+      "title": "Big Man",
+      "info": "2012",
+      "location": "Nigeria",
+      "lat": 6.433521,
+      "lon": 3.420158,
+      "category": "african-days",
+      "desc": "Uzoma likes to play games. But games have consequences.",
+      "video": "https://player.vimeo.com/video/44812628"
+    },
+
+
+    {
+      "id": "goodbye-chicken-farewell-goat",
+      "title": "Goodbye Chicken,<br/>Farewell Goat",
+      "info": "2010",
+      "location": "Nigeria",
+      "lat": 6.433521,
+      "lon": 3.420158,
+      "category": "african-days",
+      "desc": "Seven years since his last visit to Nigeria, a filmmaker meditates on the death of his father.",
+      "video": "https://player.vimeo.com/video/183157067"
+    },
+
+
+
+
+
+
+
+    {
+      "id": "the-girl-is-in-trouble",
+      "title": "The Girl is in Trouble",
+      "info": "2015",
+      "location": "USA",
+      "lat": 40.719317,
+      "lon": -73.984975,
+      "category": "new-york-streets",
+      "desc": "A Lower East Side bartender becomes entangled in a murder mystery involving a desperate woman, a missing drug dealer and the scion of a powerful investment firm.",
+      "video": "https://player.vimeo.com/video/204719021"
+    },
+
+    {
+      "id": "linus",
+      "title": "Linus",
+      "info": "2007",
+      "location": "USA",
+      "lat": 40.719317,
+      "lon": -73.984975,
+      "category": "new-york-streets",
+      "desc": "During a typical morning in New York&#39;s East Village, two strangers are changed after a chance encounter.",
+      "video": "https://player.vimeo.com/video/183157342"
+    },
+
+    {
+      "id": "she-waits-in-the-restless-horizon",
+      "title": "She Waits in the<br/> Restless Horizon",
+      "info": "2005",
+      "location": "USA",
+      "lat": 40.719317,
+      "lon": -73.984975,
+      "category": "new-york-streets",
+      "desc": "A quiet romance blooms between two immigrants in Bed-Stuy, Brooklyn.",
+      "video": "https://player.vimeo.com/video/204253578"
+    },
+
+    {
+      "id": "luce",
+      "title": "Luce",
+      "info": "2018",
+      "location": "USA",
+      "lat": 38.802659,
+      "lon": -95.827580,
+      "category": "american-lives",
+      "desc": "A married couple are forced to reckon with their idealized image of their son, adopted from war-torn Eritrea, after an alarming discovery by a devoted high school teacher threatens his status as an all-star student.",
+      "video": ""
+    },
+
+    {
+      "id": "broken-arrows",
+      "title": "Broken Arrows",
+      "info": "2015",
+      "location": "USA",
+      "lat": 38.802659,
+      "lon": -95.827580,
+      "category": "american-lives",
+      "desc": "A down on his luck high jumper is forced to confront his demons with the help of his young daughter.",
+      "video": "https://player.vimeo.com/video/204140994"
+    },
+
+    {
+      "id": "the-boundary",
+      "title": "The Boundary",
+      "info": "2008",
+      "location": "USA",
+      "lat": 38.802659,
+      "lon": -95.827580,
+      "category": "american-lives",
+      "desc": "A family on its way home is forced to deal with circumstances they would never hope for.",
+      "video": "https://player.vimeo.com/video/183156653"
+    },
+
+    {
+      "id": "meditations-a-love-story",
+      "title": "Meditations/A Love Story",
+      "info": "2004",
+      "location": "USA",
+      "lat": 38.802659,
+      "lon": -95.827580,
+      "category": "american-lives",
+      "desc": "A young couple fall in and out of love as they muse on their lives.",
+      "video": "https://player.vimeo.com/video/204263704"
+    },
+
+    {
+      "id": "the-cloverfield-paradox",
+      "title": "The Cloverfield Paradox",
+      "info": "2018",
+      "location": "USA",
+      "lat": 34.052235,
+      "lon": -118.243683,
+      "category": "hollywood-lights",
+      "desc": "A shocking discovery forces a team of astronauts aboard a space station to fight for survival while their reality has been altered.",
+      "video": ""
+    }
+  ]
+}
