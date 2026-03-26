@@ -489,17 +489,17 @@ study</p>
       },
       heroMedia: {
         type: "video",
-        src: "assets/portfolio/shg-1.mp4",
-        poster: "assets/portfolio/calgary.png",
+        src: "assets/portfolio/shg-project/shg-1.mp4",
+        poster: "assets/portfolio/shg-project/calgary.png",
         alt: "Syndicate Hospitality Group hero reel"
       },
       gallery: [
         {
-          src: "assets/portfolio/calgary.png",
+          src: "assets/portfolio/shg-project/calgary.png",
           alt: "Syndicate Hospitality Group brand presentation overview"
         },
         {
-          src: "assets/portfolio/calgary.png",
+          src: "assets/portfolio/shg-project/calgary.png",
           alt: "Syndicate Hospitality Group venue-facing visual system detail",
           position: "50% 38%",
           imageClass: "project-gallery-image-secondary"
@@ -513,8 +513,8 @@ study</p>
         status: "Active collaboration",
         description: "Visual systems for hospitality concepts, launch assets, menus, event moments and high-touch brand storytelling tailored for premium guest experiences.",
         mediaType: "video",
-        mediaSrc: "assets/portfolio/shg-1.mp4",
-        mediaPoster: "assets/portfolio/calgary.png",
+        mediaSrc: "assets/portfolio/shg-project/shg-1.mp4",
+        mediaPoster: "assets/portfolio/shg-project/calgary.png",
         highlights: [
           "Identity evolution across multiple restaurant brands",
           "Menu systems and seasonal campaign rollout",
