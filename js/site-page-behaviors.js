@@ -13,71 +13,288 @@
     let projectScrollIndicatorPointerMoveHandler = null;
     let projectScrollIndicatorPointerUpHandler = null;
     let projectScrollIndicatorInterval = 0;
+    let projectRevealScrollHandler = null;
+    let projectRevealResizeHandler = null;
+    let aboutMarkerAlignResizeHandler = null;
+    let aboutMarkerAlignLanguageHandler = null;
+    const markerMeasureCanvas = document.createElement("canvas");
+    const markerMeasureContext = markerMeasureCanvas.getContext("2d");
+
+    function getTextGlyphTopInset(element) {
+      if (!element) {
+        return 0;
+      }
+
+      const styles = window.getComputedStyle(element);
+      const fontSize = Number.parseFloat(styles.fontSize) || 0;
+      let lineHeight = Number.parseFloat(styles.lineHeight);
+      if (!Number.isFinite(lineHeight)) {
+        lineHeight = fontSize * 1.2;
+      }
+
+      if (!markerMeasureContext) {
+        return Math.max((lineHeight - fontSize) * 0.5, 0);
+      }
+
+      const fontStyle = styles.fontStyle || "normal";
+      const fontVariant = styles.fontVariant || "normal";
+      const fontWeight = styles.fontWeight || "400";
+      const fontFamily = styles.fontFamily || "sans-serif";
+      markerMeasureContext.font = `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize}px ${fontFamily}`;
+      markerMeasureContext.textBaseline = "alphabetic";
+
+      const sampleText = (element.textContent || "").trim() || "H";
+      const metrics = markerMeasureContext.measureText(sampleText);
+      const fontAscent = metrics.fontBoundingBoxAscent || fontSize;
+      const fontDescent = metrics.fontBoundingBoxDescent || fontSize * 0.2;
+      const actualAscent = metrics.actualBoundingBoxAscent || fontAscent;
+      const leading = Math.max(lineHeight - (fontAscent + fontDescent), 0);
+      const glyphTopInset = (leading * 0.5) + Math.max(fontAscent - actualAscent, 0);
+
+      return Number.isFinite(glyphTopInset) ? glyphTopInset : 0;
+    }
+
+    function clearAboutMarkerAlignmentHandlers() {
+      if (aboutMarkerAlignResizeHandler) {
+        window.removeEventListener("resize", aboutMarkerAlignResizeHandler);
+        aboutMarkerAlignResizeHandler = null;
+      }
+
+      if (aboutMarkerAlignLanguageHandler) {
+        window.removeEventListener("site:language-change", aboutMarkerAlignLanguageHandler);
+        aboutMarkerAlignLanguageHandler = null;
+      }
+    }
+
+    function clearProjectRevealHandlers() {
+      const projectScrollRoot = getProjectPageShell();
+
+      if (projectRevealScrollHandler && projectScrollRoot) {
+        projectScrollRoot.removeEventListener("scroll", projectRevealScrollHandler);
+      }
+
+      if (projectRevealResizeHandler) {
+        window.removeEventListener("resize", projectRevealResizeHandler);
+      }
+
+      projectRevealScrollHandler = null;
+      projectRevealResizeHandler = null;
+    }
+
+    function alignAboutChapterMarkers() {
+      if (!document.body.classList.contains("about-page")) {
+        return;
+      }
+
+      const blocks = Array.from(document.querySelectorAll(".about-story, .about-profile-services, .about-practice"));
+      if (!blocks.length) {
+        return;
+      }
+
+      if (window.innerWidth <= 1100) {
+        blocks.forEach((block) => block.style.removeProperty("--about-marker-top"));
+        return;
+      }
+
+      blocks.forEach((block) => {
+        const marker = block.querySelector(":scope > .about-story-intro .about-story-year");
+        const heading = block.querySelector(":scope > .glitch-heading");
+        if (!marker || !heading) {
+          return;
+        }
+
+        const blockRect = block.getBoundingClientRect();
+        const firstHeadingLine = heading.querySelector(".glitch-heading-line");
+        const referenceRect = (firstHeadingLine || heading).getBoundingClientRect();
+        const headingGlyphInset = getTextGlyphTopInset(firstHeadingLine || heading);
+        const markerGlyphInset = getTextGlyphTopInset(marker);
+        const referenceGlyphTop = referenceRect.top + headingGlyphInset;
+        const alignedTop = Math.max(referenceGlyphTop - blockRect.top - markerGlyphInset, 0);
+        block.style.setProperty("--about-marker-top", `${alignedTop.toFixed(2)}px`);
+      });
+    }
+
+    function setupAboutMarkerAlignment() {
+      if (!document.body.classList.contains("about-page")) {
+        clearAboutMarkerAlignmentHandlers();
+        return;
+      }
+
+      clearAboutMarkerAlignmentHandlers();
+
+      aboutMarkerAlignResizeHandler = () => {
+        requestAnimationFrame(alignAboutChapterMarkers);
+      };
+      aboutMarkerAlignLanguageHandler = () => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(alignAboutChapterMarkers);
+        });
+      };
+
+      window.addEventListener("resize", aboutMarkerAlignResizeHandler, { passive: true });
+      window.addEventListener("site:language-change", aboutMarkerAlignLanguageHandler);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(alignAboutChapterMarkers);
+      });
+      if (document.fonts && typeof document.fonts.ready?.then === "function") {
+        document.fonts.ready.then(() => {
+          alignAboutChapterMarkers();
+        });
+      }
+      waitForWindowLoad().then(() => {
+        alignAboutChapterMarkers();
+      });
+    }
 
     function setupRevealBlocks() {
       const revealBlocks = Array.from(document.querySelectorAll(".reveal-block"));
       if (!revealBlocks.length) return;
-      const revealRoot = document.body.classList.contains("project-page")
-        ? getProjectPageShell()
-        : document.body.classList.contains("about-page")
-          ? getAboutPageShell()
-          : null;
+      const isAboutPage = document.body.classList.contains("about-page");
+      const isProjectPage = document.body.classList.contains("project-page");
+      if (isAboutPage) {
+        setupAboutMarkerAlignment();
+      }
+      if (isProjectPage) {
+        clearProjectRevealHandlers();
+      }
+      let revealObserver = null;
 
-      function getRevealBounds() {
-        if (!revealRoot) {
+      function startRevealObserver() {
+        const revealRoot = document.body.classList.contains("project-page")
+          ? getProjectPageShell()
+          : document.body.classList.contains("about-page")
+            ? getAboutPageShell()
+            : null;
+
+        function getRevealBounds() {
+          if (!revealRoot) {
+            return {
+              top: 0,
+              bottom: window.innerHeight,
+              height: window.innerHeight
+            };
+          }
+
+          const rootRect = revealRoot.getBoundingClientRect();
           return {
-            top: 0,
-            bottom: window.innerHeight,
-            height: window.innerHeight
+            top: rootRect.top,
+            bottom: rootRect.bottom,
+            height: rootRect.height || window.innerHeight
           };
         }
 
-        const rootRect = revealRoot.getBoundingClientRect();
-        return {
-          top: rootRect.top,
-          bottom: rootRect.bottom,
-          height: rootRect.height || window.innerHeight
-        };
-      }
+        function revealBlockIfAboveFold(block) {
+          const bounds = getRevealBounds();
+          const rect = block.getBoundingClientRect();
+          const revealBottom = bounds.bottom - Math.max(
+            bounds.height * (isAboutPage ? 0.4 : isProjectPage ? 0.3 : 0.22),
+            isAboutPage ? 240 : isProjectPage ? 180 : 120
+          );
+          const revealTop = bounds.top + Math.max(
+            bounds.height * (isAboutPage ? 0.12 : isProjectPage ? 0.1 : 0.06),
+            isAboutPage ? 56 : isProjectPage ? 48 : 24
+          );
+          const inView = rect.top <= revealBottom && rect.bottom >= revealTop;
 
-      function revealBlockIfAboveFold(block) {
-        const bounds = getRevealBounds();
-        const rect = block.getBoundingClientRect();
-        const revealBottom = bounds.bottom - Math.max(bounds.height * 0.08, 40);
-        const revealTop = bounds.top + 8;
-        const inView = rect.top <= revealBottom && rect.bottom >= revealTop;
+          if (inView) {
+            block.classList.add("is-visible");
+          }
 
-        if (inView) {
-          block.classList.add("is-visible");
+          return inView;
         }
 
-        return inView;
-      }
+        if (isProjectPage) {
+          const pendingBlocks = revealBlocks.filter((block) => !block.classList.contains("is-visible"));
+          if (!pendingBlocks.length) {
+            return;
+          }
 
-      if (!("IntersectionObserver" in window)) {
-        revealBlocks.forEach((block) => block.classList.add("is-visible"));
-        return;
-      }
+          const updateProjectRevealState = () => {
+            if (!document.body.classList.contains("project-page")) {
+              return;
+            }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      }, {
-        root: revealRoot,
-        threshold: 0.16,
-        rootMargin: "0px 0px -8% 0px"
-      });
+            const bounds = getRevealBounds();
+            const revealBottom = bounds.bottom - Math.max(bounds.height * 0.18, 140);
+            const revealTop = bounds.top + Math.max(bounds.height * 0.08, 36);
 
-      revealBlocks.forEach((block) => {
-        if (revealBlockIfAboveFold(block)) {
+            pendingBlocks.forEach((block) => {
+              if (block.classList.contains("is-visible")) {
+                return;
+              }
+
+              const rect = block.getBoundingClientRect();
+              const inView = rect.top <= revealBottom && rect.bottom >= revealTop;
+
+              if (inView) {
+                block.classList.add("is-visible");
+              }
+            });
+
+            if (pendingBlocks.every((block) => block.classList.contains("is-visible"))) {
+              clearProjectRevealHandlers();
+            }
+          };
+
+          projectRevealScrollHandler = updateProjectRevealState;
+          projectRevealResizeHandler = () => {
+            requestAnimationFrame(updateProjectRevealState);
+          };
+
+          if (revealRoot) {
+            revealRoot.addEventListener("scroll", projectRevealScrollHandler, { passive: true });
+          }
+          window.addEventListener("resize", projectRevealResizeHandler, { passive: true });
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(updateProjectRevealState);
+          });
+          window.setTimeout(updateProjectRevealState, 140);
           return;
         }
 
-        observer.observe(block);
-      });
+        if (!("IntersectionObserver" in window)) {
+          revealBlocks.forEach((block) => block.classList.add("is-visible"));
+          return;
+        }
+
+        revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        }, {
+          root: revealRoot,
+          threshold: isAboutPage ? 0.28 : isProjectPage ? 0.24 : 0.3,
+          rootMargin: isAboutPage ? "0px 0px -34% 0px" : isProjectPage ? "0px 0px -26% 0px" : "0px 0px -20% 0px"
+        });
+
+        revealBlocks.forEach((block) => {
+          if (revealBlockIfAboveFold(block)) {
+            return;
+          }
+
+          revealObserver.observe(block);
+        });
+      }
+
+      if (isAboutPage && document.fonts && typeof document.fonts.ready?.then === "function") {
+        revealBlocks.forEach((block) => block.classList.remove("is-visible"));
+        document.fonts.ready.then(() => {
+          if (!document.body.classList.contains("about-page")) {
+            return;
+          }
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(startRevealObserver);
+          });
+        });
+        return;
+      }
+
+      startRevealObserver();
     }
 
     function preparePageShellIntro() {
@@ -260,7 +477,7 @@
       document.body.classList.remove("about-footer-visible");
       clearFooterRevealHandlers();
 
-      const finalStory = document.querySelector(".about-story:last-of-type");
+      const finalStory = document.querySelector(".about-content > :last-child");
       const scrollRoot = getAboutPageShell();
       if (!finalStory) {
         document.body.classList.add("about-footer-visible");
@@ -687,6 +904,8 @@
 
     function resetRouteBehaviors() {
       clearFooterRevealHandlers();
+      clearProjectRevealHandlers();
+      clearAboutMarkerAlignmentHandlers();
       teardownProjectScrollIndicator();
     }
 

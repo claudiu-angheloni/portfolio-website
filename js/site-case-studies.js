@@ -184,23 +184,50 @@ study</p>
     }).join("");
   }
 
+  function renderGalleryCard(item, extraClasses = "") {
+    const imageClass = item.imageClass
+      ? `${escapeHtml(item.imageClass)} project-glitch-media-base`
+      : "project-glitch-media-base";
+    const cardClassName = ["project-gallery-card", "project-glitch-media", "project-glitch-media-image", extraClasses]
+      .filter(Boolean)
+      .join(" ");
+
+    return `
+      <figure class="${cardClassName}" style="${createImageStyle(item)}">
+        <span class="project-glitch-layer project-glitch-layer-a" aria-hidden="true"></span>
+        <span class="project-glitch-layer project-glitch-layer-b" aria-hidden="true"></span>
+        <span class="project-glitch-fracture project-glitch-fracture-a" aria-hidden="true"></span>
+        <span class="project-glitch-fracture project-glitch-fracture-b" aria-hidden="true"></span>
+        <span class="project-glitch-chip project-glitch-chip-tl" aria-hidden="true"></span>
+        <span class="project-glitch-chip project-glitch-chip-br" aria-hidden="true"></span>
+        <img class="${imageClass}" src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || "")}" loading="lazy" decoding="async">
+      </figure>
+    `;
+  }
+
   function renderGalleryItems(items) {
     return (items || []).map((item) => {
-      const imageClass = item.imageClass
-        ? `${escapeHtml(item.imageClass)} project-glitch-media-base`
-        : "project-glitch-media-base";
+      if (item.layout === "pair" && Array.isArray(item.items) && item.items.length === 2) {
+        const shellStyles = [];
+        if (item.frameWidth) {
+          shellStyles.push(`--project-frame-max-width: ${item.frameWidth}`);
+        }
+
+        return `
+          <div class="project-gallery-media-band project-gallery-media-band-pair reveal-block">
+            <div class="project-gallery-pair-shell"${shellStyles.length ? ` style="${escapeHtml(shellStyles.join("; "))}"` : ""}>
+              ${item.items.map((pairItem, index) => renderGalleryCard(
+                pairItem,
+                `project-gallery-card-pair project-gallery-card-pair-${index + 1}`
+              )).join("")}
+            </div>
+          </div>
+        `;
+      }
 
       return `
-        <div class="project-gallery-media-band">
-          <figure class="project-gallery-card project-gallery-card-full project-glitch-media project-glitch-media-image" style="${createImageStyle(item)}">
-            <span class="project-glitch-layer project-glitch-layer-a" aria-hidden="true"></span>
-            <span class="project-glitch-layer project-glitch-layer-b" aria-hidden="true"></span>
-            <span class="project-glitch-fracture project-glitch-fracture-a" aria-hidden="true"></span>
-            <span class="project-glitch-fracture project-glitch-fracture-b" aria-hidden="true"></span>
-            <span class="project-glitch-chip project-glitch-chip-tl" aria-hidden="true"></span>
-            <span class="project-glitch-chip project-glitch-chip-br" aria-hidden="true"></span>
-            <img class="${imageClass}" src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || "")}" loading="lazy" decoding="async">
-          </figure>
+        <div class="project-gallery-media-band reveal-block">
+          ${renderGalleryCard(item, "project-gallery-card-full")}
         </div>
       `;
     }).join("");
@@ -211,7 +238,6 @@ study</p>
       <p data-i18n="projectOutcomeItem${index + 1}">${escapeHtml(item)}</p>
     `).join("");
   }
-
   function renderCreditsSection(credits) {
     if (!credits || !Array.isArray(credits.items) || !credits.items.length) {
       return "";
@@ -384,8 +410,8 @@ study</p>
                 </div>
               </section>
 
-              <section class="project-gallery reveal-block">
-                <div class="project-content-shell project-content-shell-rail">
+              <section class="project-gallery">
+                <div class="project-content-shell project-content-shell-rail reveal-block">
                   <div class="project-copy-column">
                     <div class="project-section-head">
                       <span class="project-contact-kicker" data-i18n="projectGalleryKicker">${escapeHtml(content.gallery.kicker)}</span>
@@ -651,10 +677,20 @@ study</p>
           frameWidth: "1440px"
         },
         {
-          src: "about-desktop-mid.png",
-          alt: "About page editorial layout",
-          position: "50% 50%",
-          frameWidth: "1440px"
+          layout: "pair",
+          frameWidth: "1440px",
+          items: [
+            {
+              src: "about-desktop-mid.png",
+              alt: "About page editorial layout focused on the chapter marker and title",
+              position: "28% 50%"
+            },
+            {
+              src: "about-desktop-mid.png",
+              alt: "About page editorial layout focused on the story body and oversized year marker",
+              position: "72% 50%"
+            }
+          ]
         },
         {
           src: "contact-desktop.png",
