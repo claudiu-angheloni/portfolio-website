@@ -72,19 +72,19 @@ me</p>
               </aside>
 
               <section class="about-content">
-                <article class="about-story is-visible">
+                <article class="about-story reveal-block">
                   <div class="about-story-intro">
                     <span class="about-story-kicker" data-i18n="kickerStart">The beginning</span>
                     <span class="about-story-year">2007</span>
                   </div>
                   <h1 class="glitch-heading" data-text="IT ALL STARTED WITH A DREAM">
-                    <span class="glitch-heading-muted" data-i18n="waitForIt">(WAIT FOR IT)</span>
+                    <span class="glitch-heading-muted" data-i18n="waitForIt">(ORIGIN)</span>
                     <span class="glitch-heading-line" data-i18n="startLine1">IT ALL STARTED</span>
                     <span class="glitch-heading-line" data-i18n="startLine2">WITH A DREAM</span>
                   </h1>
                   <div class="body-copy">
-                    <p data-i18n="startBody1">What began as a childhood passion has evolved into a lifelong commitment to artistic excellence. The joy I find in creating, coupled with a dedication to continuous improvement, fuels my enthusiasm for every project I undertake.</p>
-                    <p data-i18n="startBody2">In summary, my artistic journey, which began with childhood sketches and paintings, took a professional turn in 2007. Since then, I've cultivated a career marked by creativity, adaptability, and a deep-seated passion for transforming ideas into visually captivating realities.</p>
+                    <p data-i18n="startBody1">What began as a childhood passion slowly turned into something far more enduring. The joy of drawing, shaping, and imagining became the foundation of a creative path that never really left me.</p>
+                    <p data-i18n="startBody2">By 2007, that early instinct had started to take form professionally. What once lived in sketches and visual experiments began evolving into a lifelong commitment to design, growth, and artistic discipline.</p>
                   </div>
                 </article>
 
@@ -94,12 +94,13 @@ me</p>
                     <span class="about-story-year">-2012</span>
                   </div>
                   <h2 class="glitch-heading" data-text="YEARS OF FREELANCING">
-                    <span class="glitch-heading-muted" data-i18n="amazing">(AMAZING)</span>
+                    <span class="glitch-heading-muted" data-i18n="amazing">(BECOMING)</span>
                     <span class="glitch-heading-line" data-i18n="freelanceLine1">YEARS OF</span>
                     <span class="glitch-heading-line" data-i18n="freelanceLine2">FREELANCING</span>
                   </h2>
                   <div class="body-copy">
-                    <p data-i18n="freelanceBody1">For almost five years, I navigated the dynamic landscape of graphic design as a freelance practitioner, immersing myself in a world that became both my canvas and classroom. This period of freelancing has been instrumental in shaping my career, offering a rich tapestry of learning experiences, diverse projects, and a platform for specialization.</p>
+                    <p data-i18n="freelanceBody1">For nearly five years, freelancing became both my classroom and my proving ground. It was a period shaped by discovery, adaptability, and the constant challenge of turning ideas into work that felt meaningful and distinct.</p>
+                    <p data-i18n="freelanceBody2">Those years taught me how to move across industries, respond to different voices, and build with both intuition and discipline. They gave me range, but more importantly, they gave me direction.</p>
                   </div>
                 </article>
 
@@ -108,16 +109,14 @@ me</p>
                     <span class="about-story-kicker" data-i18n="kickerMirani">Mirani Design</span>
                     <span class="about-story-year">2012-</span>
                   </div>
-                  <h2 class="glitch-heading" data-text="FIRST TIME BEING APART OF A TEAM">
-                    <span class="glitch-heading-line" data-i18n="teamLine1">FIRST TIME BEING</span>
-                    <span class="glitch-heading-line" data-i18n="teamLine2">APART OF A</span>
-                    <span class="glitch-heading-line glitch-heading-line-inline">
-                      <span class="glitch-heading-muted" data-i18n="awesome">(AWESOME)</span>
-                      <span data-i18n="teamLine3">TEAM</span>
-                    </span>
+                  <h2 class="glitch-heading" data-text="THE FIRST REAL TEAM">
+                    <span class="glitch-heading-muted" data-i18n="awesome">(TOGETHER)</span>
+                    <span class="glitch-heading-line" data-i18n="teamLine1">THE FIRST</span>
+                    <span class="glitch-heading-line" data-i18n="teamLine2">REAL TEAM</span>
                   </h2>
                   <div class="body-copy">
-                    <p data-i18n="teamBody1">In 2012 I joined the dynamic and talented team at Mirani Design, a close-knit group of three friends who shared a passion for creativity and innovation. Over the course of an exhilarating year, I had the privilege of contributing my skills as a Graphic Designer to a diverse range of businesses spanning the globe.</p>
+                    <p data-i18n="teamBody1">In 2012, I joined Mirani Design, a small and talented team built around friendship, creativity, and momentum. It was my first real step into a collaborative studio environment, where ideas moved faster and the work carried a different kind of energy.</p>
+                    <p data-i18n="teamBody2">For a year, I contributed as a Graphic Designer across a diverse range of projects, gaining a deeper understanding of teamwork, rhythm, and shared creative ambition.</p>
                   </div>
                 </article>
 
@@ -126,43 +125,246 @@ me</p>
                     <span class="about-story-kicker" data-i18n="kickerTalonX">TalonX - Creative Agency</span>
                     <span class="about-story-year">2013-</span>
                   </div>
-                  <h2 class="glitch-heading glitch-heading-journey" data-text="WHEN MY JOURNEY REALLY STARTS">
-                    <span class="glitch-heading-line glitch-heading-line-inline">
-                      <span data-i18n="journeyLine1">WHEN MY</span>
-                      <span class="glitch-heading-muted" data-i18n="fantastic">(FANTASTIC)</span>
-                    </span>
-                    <span class="glitch-heading-line" data-i18n="journeyLine2">JOURNEY REALLY</span>
-                    <span class="glitch-heading-line" data-i18n="journeyLine3">STARTS</span>
+                  <h2 class="glitch-heading glitch-heading-journey" data-text="WHEN THE JOURNEY EXPANDED">
+                    <span class="glitch-heading-muted" data-i18n="fantastic">(SCALE)</span>
+                    <span class="glitch-heading-line" data-i18n="journeyLine1">WHEN THE</span>
+                    <span class="glitch-heading-line" data-i18n="journeyLine2">JOURNEY EXPANDED</span>
                   </h2>
                   <div class="body-copy">
-                    <p data-i18n="journeyBody1">In 2013, I embarked on a transformative journey by joining TalonX, a bustling creative agency based in Calgary, Alberta. Beginning with just myself and the visionary founder, Nick Suchu, this nine-year odyssey has been an extraordinary chapter that has defined my professional identity. In the early years at TalonX, the journey was a collaborative endeavor between Nick Suchu and myself. The challenges and victories of these formative years laid the groundwork for what would evolve into one of the premier design agencies in the area.</p>
-                    <p data-i18n="journeyBody2">Working closely with Nick, I witnessed the birth of a strategic vision that aligned not just for excellence but for a distinctive brand of creativity that would set TalonX apart in the competitive design landscape. TalonX's exponential growth saw our humble beginnings evolve into a thriving agency, expanding our team and capabilities. The collaborative spirit that defined the agency's culture remained a driving force even as we worked with hundreds of local and global businesses. Though our commitment to excellence remained unchanged, the projects in the area provided an ever-evolving environment to continuously innovate, solve, and discover.</p>
-                    <p data-i18n="journeyBody3">My role as a Senior Graphic Designer evolved with the agency. I took on leadership responsibilities, contributing to the shaping of design strategies, overseeing projects, and mentoring a growing team of talented designers. The design industry is dynamic, and at TalonX, we embraced change. I adapted to emerging design trends, ensuring that our work remained not only relevant but also ahead of the curve.</p>
-                    <p data-i18n="journeyBody4">These nine years at TalonX have been more than a professional journey; they have been a period of personal growth and transformation. The challenges, triumphs, and collaborations have collectively shaped who I am today as a designer. As TalonX became synonymous with design excellence, I take pride in the role I played in contributing to its legacy. The agency's success is a testament to our shared commitment to pushing creative boundaries and delivering unparalleled design solutions.</p>
+                    <p data-i18n="journeyBody1">In 2013, I joined TalonX in Calgary, Alberta - the beginning of a defining chapter in my professional life. What started as a small creative agency became, over time, a place where my role, perspective, and standards evolved in lasting ways.</p>
+                    <p data-i18n="journeyBody2">Across the years, the work grew in scale and depth. So did my involvement - from design execution to stronger influence over visual direction, consistency, branding, UI/UX, and the overall quality of what we built.</p>
+                    <p data-i18n="journeyBody3">That chapter shaped more than my portfolio. It shaped the way I think: with structure, adaptability, and a long view of design.</p>
                   </div>
                 </article>
 
                 <article class="about-story reveal-block">
                   <div class="about-story-intro">
                     <span class="about-story-kicker" data-i18n="kickerShg">Syndicate Hospitality Group (SHG)</span>
-                    <span class="about-story-year about-story-year-present" data-i18n="presentDay">PRESENT DAY</span>
+                    <span class="about-story-year about-story-year-present" data-i18n="presentDay">PRESENT</span>
                   </div>
-                  <h2 class="glitch-heading" data-text="THE HUNGER FOR PASSION">
+                  <h2 class="glitch-heading" data-text="THE HUNGER BECAME VISUAL">
+                    <span class="glitch-heading-muted" data-i18n="culinary">(HOSPITALITY)</span>
                     <span class="glitch-heading-line" data-i18n="presentLine1">THE HUNGER</span>
-                    <span class="glitch-heading-line glitch-heading-line-inline">
-                      <span data-i18n="presentLine2">FOR</span>
-                      <span class="glitch-heading-muted" data-i18n="culinary">(CULINARY)</span>
-                    </span>
-                    <span class="glitch-heading-line" data-i18n="presentLine3">PASSION</span>
+                    <span class="glitch-heading-line" data-i18n="presentLine2">BECAME VISUAL</span>
                   </h2>
                   <div class="body-copy">
-                    <p data-i18n="presentBody1">Concurrently with my tenure at TalonX Creative Agency, I embarked on a captivating journey with Syndicate Hospitality Group, a venture that has been nothing short of extraordinary. This dual role has not only nurtured my creative horizons, focusing my creative energies on the fascinating realm of restaurant design.</p>
-                    <p data-i18n="presentBody2">Witnessing the inception of Shelter Cocktail Bar, a one-of-a-kind establishment in Calgary, Alberta, was an exhilarating experience. As the Senior Graphic Designer, I played a pivotal role in crafting a visual identity that mirrored the uniqueness and allure of Shelter. From Shelter Cocktail Bar, our journey expanded. Syndicate Hospitality Group launched the addition of Orchard Restaurant and Bar, Fortuna's Row, and several new food and beverage brands. Over the years, my involvement in the visual expression of each space deepened through menus, design systems, campaigns, and immersive guest-facing moments.</p>
-                    <p data-i18n="presentBody3">Crafting menus became a distinctive forte. From Shelter's innovative cocktail menus to Orchard's culinary creations and Fortuna's Row's diverse offerings, each menu was designed to be an integral part of the dining experience. The visual identity of each venue was carefully curated, ensuring that logos and branding communicated the unique essence of Shelter, Orchard, and Fortuna's Row. These design elements became a vital aspect of each establishment's character. A hallmark of my role was collaboration: working with culinary teams to ensure that the design seamlessly intertwined with the culinary vision.</p>
-                    <p data-i18n="presentBody4">The years spent specializing in restaurant design have been nothing short of fantastic. The passion for creating immersive visual experiences for diners, capturing the essence of each venue, remains an enduring joy that continues to drive my creativity. Current and future endeavors: As I continue my journey with Syndicate Hospitality Group, I look forward to new challenges, fresh creative opportunities, and contributing to the ever-evolving visual narrative of each venue.</p>
-                    <p data-i18n="presentBody5">Reflecting on this period, it's not just about designing for Shelter, Orchard, and Fortuna's Row. It's about curating experiences, capturing the spirit of each establishment, and contributing to the vibrant tapestry of Calgary's hospitality scene.</p>
+                    <p data-i18n="presentBody1">Alongside my time at TalonX, my collaboration with Syndicate Hospitality Group opened a new creative direction - one rooted in atmosphere, experience, and the emotional power of place.</p>
+                    <p data-i18n="presentBody2">From Shelter Cocktail Bar to Orchard, Fortuna's Row, and other hospitality concepts, I helped shape visual identities, menus, campaigns, and brand systems that were meant to be felt as much as seen.</p>
+                    <p data-i18n="presentBody3">This work brought design closer to the real world - to environments, people, and moments. It deepened my sensitivity to cohesion, tone, and the way branding can live far beyond the screen.</p>
                   </div>
                 </article>
+
+                <article class="about-story reveal-block">
+                  <div class="about-story-intro">
+                    <span class="about-story-kicker" data-i18n="kickerSwag">S.W.A.G. Stuff We All Get</span>
+                    <span class="about-story-year">2025+</span>
+                  </div>
+                  <h2 class="glitch-heading glitch-heading-swag" data-text="WHERE DESIGN BECAME A SYSTEM">
+                    <span class="glitch-heading-muted" data-i18n="future">(FUTURE)</span>
+                    <span class="glitch-heading-line" data-i18n="swagLine1">WHERE DESIGN</span>
+                    <span class="glitch-heading-line" data-i18n="swagLine2">BECAME A SYSTEM</span>
+                  </h2>
+                  <div class="body-copy">
+                    <p data-i18n="swagBody1">More recently, that evolution has extended into S.W.A.G. - a product shaped at the intersection of brand, experience, marketplace thinking, and AI.</p>
+                    <p data-i18n="swagBody2">Through S.W.A.G., my role moved beyond visual execution into something broader: helping shape a living product system, where identity, interaction, storytelling, trust, and user flow all had to work together as one.</p>
+                    <p data-i18n="swagBody3">It became a different kind of challenge - not just designing what people see, but helping define how the product behaves, feels, and grows over time. That shift continues to influence the way I think about design today.</p>
+                  </div>
+                </article>
+
+                <section class="about-profile">
+                  <article class="about-story about-profile-story reveal-block" aria-labelledby="about-profile-heading">
+                    <div class="about-story-intro about-profile-story-intro">
+                      <span class="about-story-kicker" data-i18n="whyMeLabel">WHY ME</span>
+                      <span class="about-story-year about-chapter-word" aria-hidden="true" data-i18n="helloWord">HELLO!</span>
+                    </div>
+                    <h2 class="glitch-heading about-profile-heading" id="about-profile-heading" data-text="IT IS WONDERFUL MEETING YOU">
+                      <span class="glitch-heading-line" data-i18n="whyIntroLine1">IT IS WONDERFUL</span>
+                      <span class="glitch-heading-line" data-i18n="whyIntroLine2">MEETING YOU</span>
+                    </h2>
+                    <div class="body-copy about-profile-copy">
+                      <p data-i18n="whyIntroBody1">With more than fifteen years of practice behind me, design has become more than a profession. It is the way I shape clarity, atmosphere, and direction across brands, digital experiences, and visual systems.</p>
+                      <p data-i18n="whyIntroBody2">Over time, my work has moved between identity, hospitality, UI/UX, campaigns, and product thinking - always with the same intention: to build work that feels considered, coherent, and built to last.</p>
+                    </div>
+                  </article>
+
+                      <section class="about-profile-services reveal-block" aria-labelledby="about-services-heading">
+                        <div class="about-story-intro about-section-intro">
+                          <span class="about-story-kicker" data-i18n="servicesKicker">SUPPORT</span>
+                          <span class="about-story-year about-chapter-word about-chapter-word-services" aria-hidden="true" data-i18n="servicesWord">SERVICES</span>
+                        </div>
+                        <h2 class="glitch-heading about-profile-services-heading" id="about-services-heading" data-text="HOW MY WORK SUPPORTS YOUR BUSINESS">
+                          <span class="glitch-heading-line" data-i18n="servicesHeadingLine1">HOW MY WORK</span>
+                          <span class="glitch-heading-line" data-i18n="servicesHeadingLine2">SUPPORTS YOUR BUSINESS</span>
+                        </h2>
+                        <div class="about-profile-services-grid">
+                          <article class="about-profile-service">
+                            <h3 class="about-profile-service-title" data-i18n="servicePresenceTitle">STRONGER BRAND PRESENCE</h3>
+                            <p class="about-profile-service-body" data-i18n="servicePresenceBody">Clear visual systems create recognition, confidence, and consistency. From identity to execution, the work is shaped to feel intentional and memorable across every touchpoint.</p>
+                          </article>
+                          <article class="about-profile-service">
+                            <h3 class="about-profile-service-title" data-i18n="serviceEngagementTitle">BETTER ENGAGEMENT</h3>
+                            <p class="about-profile-service-body" data-i18n="serviceEngagementBody">Thoughtful design helps people stay with what they are seeing. It improves clarity, strengthens communication, and creates stronger interaction across digital and brand experiences.</p>
+                          </article>
+                          <article class="about-profile-service">
+                            <h3 class="about-profile-service-title" data-i18n="serviceDirectionTitle">ADAPTIVE CREATIVE DIRECTION</h3>
+                            <p class="about-profile-service-body" data-i18n="serviceDirectionBody">Design never stands still. My approach evolves with context, audience, and medium - helping brands stay relevant while keeping their visual language coherent over time.</p>
+                          </article>
+                        </div>
+                      </section>
+
+                      <section class="about-practice reveal-block" aria-labelledby="about-practice-heading">
+                        <div class="about-story-intro about-section-intro">
+                          <span class="about-story-kicker" data-i18n="practiceKicker">PRACTICE</span>
+                          <span class="about-story-year about-chapter-word about-practice-word" aria-hidden="true" data-i18n="skillsWord">SKILLS</span>
+                        </div>
+                        <h2 class="glitch-heading about-practice-heading" id="about-practice-heading" data-text="TOOLS AND DISCIPLINES">
+                          <span class="glitch-heading-line" data-i18n="practiceHeadingLine1">TOOLS</span>
+                          <span class="glitch-heading-line" data-i18n="practiceHeadingLine2">AND DISCIPLINES</span>
+                        </h2>
+
+                        <div class="about-practice-grid">
+                          <article class="about-practice-column">
+                            <h3 class="about-practice-column-title" data-i18n="toolsColumnTitle">TOOLS</h3>
+                            <ul class="about-practice-list">
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 88%; --skill-delay: 120ms;">
+                                <span class="about-practice-name" data-i18n="toolItem1">Figma</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 82%; --skill-delay: 190ms;">
+                                <span class="about-practice-name" data-i18n="toolItem2">Adobe Photoshop</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 78%; --skill-delay: 260ms;">
+                                <span class="about-practice-name" data-i18n="toolItem3">Adobe Illustrator</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 70%; --skill-delay: 330ms;">
+                                <span class="about-practice-name" data-i18n="toolItem4">Adobe InDesign</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelStrong" data-sync-text data-text="STRONG">STRONG</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 60%; --skill-delay: 400ms;">
+                                <span class="about-practice-name" data-i18n="toolItem5">Adobe After Effects</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelEvolving" data-sync-text data-text="EVOLVING">EVOLVING</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 56%; --skill-delay: 470ms;">
+                                <span class="about-practice-name" data-i18n="toolItem6">Framer</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelEvolving" data-sync-text data-text="EVOLVING">EVOLVING</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 66%; --skill-delay: 540ms;">
+                                <span class="about-practice-name" data-i18n="toolItem7">Adobe XD</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelStrong" data-sync-text data-text="STRONG">STRONG</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 58%; --skill-delay: 610ms;">
+                                <span class="about-practice-name" data-i18n="toolItem8">AI Workflows</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelEvolving" data-sync-text data-text="EVOLVING">EVOLVING</span>
+                                </span>
+                              </li>
+                            </ul>
+                          </article>
+
+                          <article class="about-practice-column">
+                            <h3 class="about-practice-column-title" data-i18n="disciplinesColumnTitle">DISCIPLINES</h3>
+                            <ul class="about-practice-list">
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 90%; --skill-delay: 150ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem1">Brand Identity</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 74%; --skill-delay: 220ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem2">UI/UX Design</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 60%; --skill-delay: 290ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem3">Product Thinking</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelAdvanced" data-sync-text data-text="ADVANCED">ADVANCED</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 70%; --skill-delay: 360ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem4">Design Systems</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelStrong" data-sync-text data-text="STRONG">STRONG</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 84%; --skill-delay: 430ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem5">Hospitality Branding</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelCore" data-sync-text data-text="CORE">CORE</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 76%; --skill-delay: 500ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem6">Visual Storytelling</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelStrong" data-sync-text data-text="STRONG">STRONG</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 62%; --skill-delay: 570ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem7">Investor Narratives</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelEvolving" data-sync-text data-text="EVOLVING">EVOLVING</span>
+                                </span>
+                              </li>
+                              <li class="about-practice-item" tabindex="0" style="--skill-stop: 68%; --skill-delay: 640ms;">
+                                <span class="about-practice-name" data-i18n="disciplineItem8">Campaign Direction</span>
+                                <span class="about-practice-graphic" aria-hidden="true">
+                                  <span class="about-practice-track"><span class="about-practice-track-fill"></span></span>
+                                  <span class="about-practice-marker"></span>
+                                  <span class="about-practice-level" data-i18n="levelStrong" data-sync-text data-text="STRONG">STRONG</span>
+                                </span>
+                              </li>
+                            </ul>
+                          </article>
+                        </div>
+                      </section>
+                </section>
               </section>
             </main>
           </div>
@@ -406,43 +608,88 @@ perfection</p>
       },
       about: {
         footerPage: "About\nme",
-        presentDay: "PRESENT\nDAY",
+        presentDay: "PRESENT",
         kickerStart: "The beginning",
         startLine1: "IT ALL STARTED",
         startLine2: "WITH A DREAM",
-        waitForIt: "(WAIT FOR IT)",
-        startBody1: "What began as a childhood passion has evolved into a lifelong commitment to artistic excellence. The joy I find in creating, coupled with a dedication to continuous improvement, fuels my enthusiasm for every project I undertake.",
-        startBody2: "In summary, my artistic journey, which began with childhood sketches and paintings, took a professional turn in 2007. Since then, I've cultivated a career marked by creativity, adaptability, and a deep-seated passion for transforming ideas into visually captivating realities.",
+        waitForIt: "(ORIGIN)",
+        startBody1: "What began as a childhood passion slowly turned into something far more enduring. The joy of drawing, shaping, and imagining became the foundation of a creative path that never really left me.",
+        startBody2: "By 2007, that early instinct had started to take form professionally. What once lived in sketches and visual experiments began evolving into a lifelong commitment to design, growth, and artistic discipline.",
         kickerFreelancing: "Freelancing",
-        amazing: "(AMAZING)",
+        amazing: "(BECOMING)",
         freelanceLine1: "YEARS OF",
         freelanceLine2: "FREELANCING",
-        freelanceBody1: "For almost five years, I navigated the dynamic landscape of graphic design as a freelance practitioner, immersing myself in a world that became both my canvas and classroom. This period of freelancing has been instrumental in shaping my career, offering a rich tapestry of learning experiences, diverse projects, and a platform for specialization.",
+        freelanceBody1: "For nearly five years, freelancing became both my classroom and my proving ground. It was a period shaped by discovery, adaptability, and the constant challenge of turning ideas into work that felt meaningful and distinct.",
+        freelanceBody2: "Those years taught me how to move across industries, respond to different voices, and build with both intuition and discipline. They gave me range, but more importantly, they gave me direction.",
         kickerMirani: "Mirani Design",
-        awesome: "(AWESOME)",
-        teamLine1: "FIRST TIME BEING",
-        teamLine2: "APART OF A",
-        teamLine3: "TEAM",
-        teamBody1: "In 2012 I joined the dynamic and talented team at Mirani Design, a close-knit group of three friends who shared a passion for creativity and innovation. Over the course of an exhilarating year, I had the privilege of contributing my skills as a Graphic Designer to a diverse range of businesses spanning the globe.",
+        awesome: "(TOGETHER)",
+        teamLine1: "THE FIRST",
+        teamLine2: "REAL TEAM",
+        teamBody1: "In 2012, I joined Mirani Design, a small and talented team built around friendship, creativity, and momentum. It was my first real step into a collaborative studio environment, where ideas moved faster and the work carried a different kind of energy.",
+        teamBody2: "For a year, I contributed as a Graphic Designer across a diverse range of projects, gaining a deeper understanding of teamwork, rhythm, and shared creative ambition.",
         kickerTalonX: "TalonX - Creative Agency",
-        fantastic: "(FANTASTIC)",
-        journeyLine1: "WHEN MY",
-        journeyLine2: "JOURNEY REALLY",
-        journeyLine3: "STARTS",
-        journeyBody1: "In 2013, I embarked on a transformative journey by joining TalonX, a bustling creative agency based in Calgary, Alberta. Beginning with just myself and the visionary founder, Nick Suchu, this nine-year odyssey has been an extraordinary chapter that has defined my professional identity. In the early years at TalonX, the journey was a collaborative endeavor between Nick Suchu and myself. The challenges and victories of these formative years laid the groundwork for what would evolve into one of the premier design agencies in the area.",
-        journeyBody2: "Working closely with Nick, I witnessed the birth of a strategic vision that aligned not just for excellence but for a distinctive brand of creativity that would set TalonX apart in the competitive design landscape. TalonX's exponential growth saw our humble beginnings evolve into a thriving agency, expanding our team and capabilities. The collaborative spirit that defined the agency's culture remained a driving force even as we worked with hundreds of local and global businesses. Though our commitment to excellence remained unchanged, the projects in the area provided an ever-evolving environment to continuously innovate, solve, and discover.",
-        journeyBody3: "My role as a Senior Graphic Designer evolved with the agency. I took on leadership responsibilities, contributing to the shaping of design strategies, overseeing projects, and mentoring a growing team of talented designers. The design industry is dynamic, and at TalonX, we embraced change. I adapted to emerging design trends, ensuring that our work remained not only relevant but also ahead of the curve.",
-        journeyBody4: "These nine years at TalonX have been more than a professional journey; they have been a period of personal growth and transformation. The challenges, triumphs, and collaborations have collectively shaped who I am today as a designer. As TalonX became synonymous with design excellence, I take pride in the role I played in contributing to its legacy. The agency's success is a testament to our shared commitment to pushing creative boundaries and delivering unparalleled design solutions.",
+        fantastic: "(SCALE)",
+        journeyLine1: "WHEN THE",
+        journeyLine2: "JOURNEY EXPANDED",
+        journeyBody1: "In 2013, I joined TalonX in Calgary, Alberta - the beginning of a defining chapter in my professional life. What started as a small creative agency became, over time, a place where my role, perspective, and standards evolved in lasting ways.",
+        journeyBody2: "Across the years, the work grew in scale and depth. So did my involvement - from design execution to stronger influence over visual direction, consistency, branding, UI/UX, and the overall quality of what we built.",
+        journeyBody3: "That chapter shaped more than my portfolio. It shaped the way I think: with structure, adaptability, and a long view of design.",
         kickerShg: "Syndicate Hospitality Group (SHG)",
-        culinary: "(CULINARY)",
+        culinary: "(HOSPITALITY)",
         presentLine1: "THE HUNGER",
-        presentLine2: "FOR",
-        presentLine3: "PASSION",
-        presentBody1: "Concurrently with my tenure at TalonX Creative Agency, I embarked on a captivating journey with Syndicate Hospitality Group, a venture that has been nothing short of extraordinary. This dual role has not only nurtured my creative horizons, focusing my creative energies on the fascinating realm of restaurant design.",
-        presentBody2: "Witnessing the inception of Shelter Cocktail Bar, a one-of-a-kind establishment in Calgary, Alberta, was an exhilarating experience. As the Senior Graphic Designer, I played a pivotal role in crafting a visual identity that mirrored the uniqueness and allure of Shelter. From Shelter Cocktail Bar, our journey expanded. Syndicate Hospitality Group launched the addition of Orchard Restaurant and Bar, Fortuna's Row, and several new food and beverage brands. Over the years, my involvement in the visual expression of each space deepened through menus, design systems, campaigns, and immersive guest-facing moments.",
-        presentBody3: "Crafting menus became a distinctive forte. From Shelter's innovative cocktail menus to Orchard's culinary creations and Fortuna's Row's diverse offerings, each menu was designed to be an integral part of the dining experience. The visual identity of each venue was carefully curated, ensuring that logos and branding communicated the unique essence of Shelter, Orchard, and Fortuna's Row. These design elements became a vital aspect of each establishment's character. A hallmark of my role was collaboration: working with culinary teams to ensure that the design seamlessly intertwined with the culinary vision.",
-        presentBody4: "The years spent specializing in restaurant design have been nothing short of fantastic. The passion for creating immersive visual experiences for diners, capturing the essence of each venue, remains an enduring joy that continues to drive my creativity. Current and future endeavors: As I continue my journey with Syndicate Hospitality Group, I look forward to new challenges, fresh creative opportunities, and contributing to the ever-evolving visual narrative of each venue.",
-        presentBody5: "Reflecting on this period, it's not just about designing for Shelter, Orchard, and Fortuna's Row. It's about curating experiences, capturing the spirit of each establishment, and contributing to the vibrant tapestry of Calgary's hospitality scene."
+        presentLine2: "BECAME VISUAL",
+        presentBody1: "Alongside my time at TalonX, my collaboration with Syndicate Hospitality Group opened a new creative direction - one rooted in atmosphere, experience, and the emotional power of place.",
+        presentBody2: "From Shelter Cocktail Bar to Orchard, Fortuna's Row, and other hospitality concepts, I helped shape visual identities, menus, campaigns, and brand systems that were meant to be felt as much as seen.",
+        presentBody3: "This work brought design closer to the real world - to environments, people, and moments. It deepened my sensitivity to cohesion, tone, and the way branding can live far beyond the screen.",
+        kickerSwag: "S.W.A.G. Stuff We All Get",
+        future: "(FUTURE)",
+        swagLine1: "WHERE DESIGN",
+        swagLine2: "BECAME A SYSTEM",
+        swagBody1: "More recently, that evolution has extended into S.W.A.G. Stuff We All Get - a product shaped at the intersection of brand, experience, marketplace thinking, and AI.",
+        swagBody2: "Through S.W.A.G., my role moved beyond visual execution into something broader: helping shape a living product system, where identity, interaction, storytelling, trust, and user flow all had to work together as one.",
+        swagBody3: "It became a different kind of challenge - not just designing what people see, but helping define how the product behaves, feels, and grows over time. That shift continues to influence the way I think about design today.",
+        whyMeLabel: "WHY ME",
+        whyIntroLine1: "IT IS WONDERFUL",
+        whyIntroLine2: "MEETING YOU",
+        helloWord: "HELLO!",
+        whyIntroBody1: "With more than fifteen years of practice behind me, design has become more than a profession. It is the way I shape clarity, atmosphere, and direction across brands, digital experiences, and visual systems.",
+        whyIntroBody2: "Over time, my work has moved between identity, hospitality, UI/UX, campaigns, and product thinking - always with the same intention: to build work that feels considered, coherent, and built to last.",
+        servicesKicker: "SUPPORT",
+        servicesHeadingLine1: "HOW MY WORK",
+        servicesHeadingLine2: "SUPPORTS YOUR BUSINESS",
+        servicesWord: "SERVICES",
+        servicePresenceTitle: "STRONGER BRAND PRESENCE",
+        servicePresenceBody: "Clear visual systems create recognition, confidence, and consistency. From identity to execution, the work is shaped to feel intentional and memorable across every touchpoint.",
+        serviceEngagementTitle: "BETTER ENGAGEMENT",
+        serviceEngagementBody: "Thoughtful design helps people stay with what they are seeing. It improves clarity, strengthens communication, and creates stronger interaction across digital and brand experiences.",
+        serviceDirectionTitle: "ADAPTIVE CREATIVE DIRECTION",
+        serviceDirectionBody: "Design never stands still. My approach evolves with context, audience, and medium - helping brands stay relevant while keeping their visual language coherent over time.",
+        practiceKicker: "PRACTICE",
+        skillsWord: "SKILLS",
+        practiceHeadingLine1: "TOOLS",
+        practiceHeadingLine2: "AND DISCIPLINES",
+        toolsColumnTitle: "TOOLS",
+        disciplinesColumnTitle: "DISCIPLINES",
+        toolItem1: "Figma",
+        toolItem2: "Adobe Photoshop",
+        toolItem3: "Adobe Illustrator",
+        toolItem4: "Adobe InDesign",
+        toolItem5: "Adobe After Effects",
+        toolItem6: "Framer",
+        toolItem7: "Adobe XD",
+        toolItem8: "AI Workflows",
+        disciplineItem1: "Brand Identity",
+        disciplineItem2: "UI/UX Design",
+        disciplineItem3: "Product Thinking",
+        disciplineItem4: "Design Systems",
+        disciplineItem5: "Hospitality Branding",
+        disciplineItem6: "Visual Storytelling",
+        disciplineItem7: "Investor Narratives",
+        disciplineItem8: "Campaign Direction",
+        levelCore: "CORE",
+        levelStrong: "STRONG",
+        levelAdvanced: "ADVANCED",
+        levelEvolving: "EVOLVING"
       },
       contact: {
         kicker: "Its wonderful to hear from you",
@@ -493,39 +740,84 @@ perfection</p>
         kickerStart: "Inceputul",
         startLine1: "TOTUL A INCEPUT",
         startLine2: "CU UN VIS",
-        waitForIt: "(AI RABDARE)",
-        startBody1: "Ceea ce a inceput ca o pasiune din copilarie s-a transformat intr-un angajament pe viata fata de excelenta artistica. Bucuria pe care o gasesc in procesul de creatie, alaturi de dorinta constanta de a evolua, imi alimenteaza entuziasmul pentru fiecare proiect.",
-        startBody2: "Pe scurt, drumul meu artistic, inceput cu schite si picturi din copilarie, a capatat o directie profesionala in 2007. De atunci mi-am construit o cariera definita de creativitate, adaptabilitate si pasiunea de a transforma ideile in rezultate vizuale memorabile.",
+        waitForIt: "(ORIGINE)",
+        startBody1: "Ceea ce a inceput ca o pasiune din copilarie s-a transformat incet in ceva mult mai durabil. Bucuria de a desena, de a modela si de a imagina a devenit fundatia unui drum creativ care nu m-a parasit niciodata cu adevarat.",
+        startBody2: "Pana in 2007, instinctul acela timpuriu incepuse deja sa capete forma profesionala. Ceea ce traia candva in schite si experimente vizuale a inceput sa se transforme intr-un angajament de lunga durata fata de design, evolutie si disciplina artistica.",
         kickerFreelancing: "Freelancing",
-        amazing: "(INCREDIBIL)",
+        amazing: "(DEVENIRE)",
         freelanceLine1: "ANI DE",
         freelanceLine2: "FREELANCING",
-        freelanceBody1: "Timp de aproape cinci ani am navigat lumea dinamica a graphic design-ului ca freelancer, intr-o perioada care a fost in acelasi timp si teren de joaca, si scoala. Aceasta etapa mi-a modelat puternic parcursul profesional prin proiecte diverse, experiente intense si oportunitati reale de specializare.",
+        freelanceBody1: "Timp de aproape cinci ani, freelancing-ul a fost si scoala mea, si terenul meu de proba. A fost o perioada modelata de descoperire, adaptabilitate si provocarea constanta de a transforma ideile in lucru cu sens si personalitate.",
+        freelanceBody2: "Anii aceia m-au invatat cum sa ma misc intre industrii, cum sa raspund unor voci diferite si cum sa construiesc cu intuitie, dar si cu disciplina. Mi-au oferit amplitudine, dar mai ales directie.",
         kickerMirani: "Mirani Design",
-        awesome: "(EXTRAORDINARA)",
-        teamLine1: "PRIMA DATA",
-        teamLine2: "INTR-O",
-        teamLine3: "ECHIPA",
-        teamBody1: "In 2012 m-am alaturat echipei talentate de la Mirani Design, un grup unit de trei prieteni cu aceeasi pasiune pentru creativitate si inovatie. Intr-un singur an intens, am contribuit ca Graphic Designer la o varietate de proiecte pentru business-uri din intreaga lume.",
+        awesome: "(IMPREUNA)",
+        teamLine1: "PRIMA",
+        teamLine2: "ECHIPA REALA",
+        teamBody1: "In 2012, m-am alaturat Mirani Design, o echipa mica si talentata, construita in jurul prieteniei, creativitatii si al unui ritm viu. A fost primul meu pas real intr-un studio colaborativ, unde ideile se miscau mai repede, iar munca avea o energie diferita.",
+        teamBody2: "Timp de un an, am contribuit ca Graphic Designer la proiecte diverse, intelegand mai profund ce inseamna lucrul in echipa, ritmul comun si ambitia creativa impartasita.",
         kickerTalonX: "TalonX - Agentie Creativa",
-        fantastic: "(FANTASTIC)",
-        journeyLine1: "CAND",
-        journeyLine2: "CALATORIA MEA",
-        journeyLine3: "INCEPE CU ADEVARAT",
-        journeyBody1: "In 2013 am inceput o etapa transformatoare odata cu alaturarea la TalonX, o agentie creativa dinamica din Calgary, Alberta. Am pornit la drum alaturi de fondatorul vizionar Nick Suchu, iar aceasta aventura de noua ani a devenit un capitol definitoriu pentru identitatea mea profesionala. In primii ani, provocarile si reusitele noastre au pus fundatia pentru ceea ce urma sa devina una dintre agentiile de design remarcabile din zona.",
-        journeyBody2: "Lucrand indeaproape cu Nick, am vazut cum a prins contur o viziune strategica orientata nu doar spre excelenta, ci si spre un stil creativ distinct. Cresterea accelerata a TalonX ne-a dus de la un inceput modest la o agentie in plina expansiune, cu o echipa mai mare si capabilitati extinse. Spiritul colaborativ a ramas esential chiar si atunci cand am ajuns sa lucram cu sute de business-uri locale si internationale.",
-        journeyBody3: "Rolul meu de Senior Graphic Designer a evoluat odata cu agentia. Mi-am asumat responsabilitati de leadership, am contribuit la strategii de design, am coordonat proiecte si am sustinut dezvoltarea unei echipe de designeri talentati. Industria se schimba constant, iar la TalonX am imbratisat aceasta schimbare pentru a ramane relevanti si cu un pas inainte.",
-        journeyBody4: "Cei noua ani petrecuti la TalonX au insemnat mai mult decat o experienta profesionala; au fost o perioada de crestere personala si transformare. Provocarile, reusitele si colaborarile din acest interval au contribuit la omul si designerul care sunt astazi. Succesul agentiei reflecta angajamentul nostru comun de a impinge limitele creativitatii si de a livra solutii de design exceptionale.",
+        fantastic: "(SCARA)",
+        journeyLine1: "CAND DRUMUL",
+        journeyLine2: "S-A EXTINS",
+        journeyBody1: "In 2013, am ajuns la TalonX in Calgary, Alberta - inceputul unui capitol definitoriu in viata mea profesionala. Ceea ce a pornit ca o agentie creativa mica a devenit, in timp, locul in care rolul meu, perspectiva mea si standardele mele au crescut in mod durabil.",
+        journeyBody2: "De-a lungul anilor, munca s-a extins ca scara si profunzime. La fel s-a extins si implicarea mea - de la executia de design la o influenta tot mai puternica asupra directiei vizuale, consistentei, brandingului, UI/UX-ului si calitatii generale a ceea ce construiam.",
+        journeyBody3: "Capitolul acesta mi-a modelat mai mult decat portofoliul. Mi-a modelat felul de a gandi: cu structura, adaptabilitate si o perspectiva lunga asupra designului.",
         kickerShg: "Syndicate Hospitality Group (SHG)",
-        culinary: "(CULINARA)",
+        culinary: "(OSPITALITATE)",
         presentLine1: "FOAMEA",
-        presentLine2: "PENTRU",
-        presentLine3: "PASIUNE",
-        presentBody1: "In paralel cu perioada mea la TalonX Creative Agency, am pornit si intr-o calatorie captivanta alaturi de Syndicate Hospitality Group, o experienta cu adevarat speciala. Acest rol dublu mi-a extins orizonturile creative si mi-a concentrat energia asupra fascinantei lumi a designului pentru ospitalitate si restaurante.",
-        presentBody2: "Sa asist la aparitia Shelter Cocktail Bar, un loc aparte din Calgary, Alberta, a fost o experienta memorabila. In rolul de Senior Graphic Designer am contribuit decisiv la conturarea unei identitati vizuale care sa reflecte unicitatea si farmecul locatiei. De la Shelter, parcursul s-a extins catre Orchard Restaurant and Bar, Fortuna's Row si alte concepte noi din zona food and beverage.",
-        presentBody3: "Crearea meniurilor a devenit una dintre specializarile mele. De la cocktail menus pentru Shelter la experientele culinare Orchard si ofertele diverse Fortuna's Row, fiecare meniu a fost gandit ca parte integrata a experientei clientului. Identitatea vizuala a fiecarui spatiu a fost construita atent, astfel incat brandingul sa comunice autentic esenta fiecarui loc.",
-        presentBody4: "Anii dedicati designului pentru restaurante au fost extraordinari. Pasiunea de a construi experiente vizuale imersive pentru oaspeti si de a surprinde personalitatea fiecarui venue continua sa fie una dintre cele mai mari surse ale creativitatii mele. Privind spre prezent si viitor, astept cu entuziasm noi provocari si oportunitati creative.",
-        presentBody5: "Privind inapoi, aceasta etapa nu a fost doar despre a crea pentru Shelter, Orchard sau Fortuna's Row. A fost despre a construi experiente, a surprinde spiritul fiecarui loc si a contribui la energia scenei de hospitality din Calgary."
+        presentLine2: "A DEVENIT VIZUALA",
+        presentBody1: "In paralel cu anii mei la TalonX, colaborarea cu Syndicate Hospitality Group a deschis o noua directie creativa - una construita din atmosfera, experienta si puterea emotionala a locului.",
+        presentBody2: "De la Shelter Cocktail Bar la Orchard, Fortuna's Row si alte concepte din zona hospitality, am contribuit la identitati vizuale, meniuri, campanii si sisteme de brand gandite sa fie simtite la fel de mult pe cat sunt vazute.",
+        presentBody3: "Munca aceasta a adus designul mai aproape de lumea reala - de spatii, de oameni si de momente. Mi-a aprofundat sensibilitatea pentru coerenta, ton si felul in care brandingul poate trai mult dincolo de ecran.",
+        kickerSwag: "S.W.A.G. Stuff We All Get",
+        future: "(VIITOR)",
+        swagLine1: "CAND DESIGNUL",
+        swagLine2: "A DEVENIT SISTEM",
+        swagBody1: "Mai recent, evolutia aceasta s-a extins in S.W.A.G. Stuff We All Get - un produs modelat la intersectia dintre brand, experienta, logica de marketplace si AI.",
+        swagBody2: "Prin S.W.A.G., rolul meu a trecut dincolo de executia vizuala spre ceva mai amplu: contributia la un sistem de produs viu, unde identitatea, interactiunea, storytelling-ul, increderea si parcursul utilizatorului trebuiau sa functioneze impreuna.",
+        swagBody3: "A devenit un alt tip de provocare - nu doar sa desenez ceea ce se vede, ci sa ajut la definirea felului in care produsul se comporta, se simte si creste in timp. Schimbarea aceasta continua sa-mi influenteze felul in care gandesc designul astazi.",
+        whyMeLabel: "DE CE EU",
+        whyIntroLine1: "E O BUCURIE",
+        whyIntroLine2: "SA TE CUNOSC",
+        helloWord: "SALUT!",
+        whyIntroBody1: "Cu mai bine de cincisprezece ani de practica in spate, designul a devenit mai mult decat o profesie. Este felul in care dau forma claritatii, atmosferei si directiei in branduri, experiente digitale si sisteme vizuale.",
+        whyIntroBody2: "In timp, munca mea a trecut prin identitate, hospitality, UI/UX, campanii si gandire de produs - mereu cu aceeasi intentie: sa construiesc lucrari care se simt gandite, coerente si facute sa reziste.",
+        servicesKicker: "SUPORT",
+        servicesHeadingLine1: "CUM SPRIJINA MUNCA MEA",
+        servicesHeadingLine2: "BUSINESS-UL TAU",
+        servicesWord: "SERVICII",
+        servicePresenceTitle: "PREZENTA DE BRAND MAI PUTERNICA",
+        servicePresenceBody: "Sistemele vizuale clare creeaza recunoastere, incredere si consistenta. De la identitate pana la executie, munca este construita sa se simta intentionata si memorabila in fiecare punct de contact.",
+        serviceEngagementTitle: "ENGAGEMENT MAI BUN",
+        serviceEngagementBody: "Designul atent ii ajuta pe oameni sa ramana conectati la ceea ce privesc. Aduce mai multa claritate, intareste comunicarea si creeaza interactiuni mai puternice in experiente digitale si de brand.",
+        serviceDirectionTitle: "DIRECTIE CREATIVA ADAPTIVA",
+        serviceDirectionBody: "Designul nu sta niciodata pe loc. Abordarea mea evolueaza odata cu contextul, publicul si mediul - ajutand brandurile sa ramana relevante, pastrand in acelasi timp coerenta limbajului lor vizual in timp.",
+        practiceKicker: "PRACTICA",
+        skillsWord: "SKILLS",
+        practiceHeadingLine1: "UNELTE",
+        practiceHeadingLine2: "SI DISCIPLINE",
+        toolsColumnTitle: "UNELTE",
+        disciplinesColumnTitle: "DISCIPLINE",
+        toolItem1: "Figma",
+        toolItem2: "Adobe Photoshop",
+        toolItem3: "Adobe Illustrator",
+        toolItem4: "Adobe InDesign",
+        toolItem5: "Adobe After Effects",
+        toolItem6: "Framer",
+        toolItem7: "Adobe XD",
+        toolItem8: "Fluxuri AI",
+        disciplineItem1: "Identitate de Brand",
+        disciplineItem2: "Design UI/UX",
+        disciplineItem3: "Gandire de Produs",
+        disciplineItem4: "Sisteme de Design",
+        disciplineItem5: "Branding pentru Hospitality",
+        disciplineItem6: "Storytelling Vizual",
+        disciplineItem7: "Narative pentru Investitori",
+        disciplineItem8: "Directie de Campanie",
+        levelCore: "NUCLEU",
+        levelStrong: "PUTERNIC",
+        levelAdvanced: "AVANSAT",
+        levelEvolving: "IN EVOLUTIE"
       },
       contact: {
         kicker: "Ma bucur sa aud despre proiectul tau",

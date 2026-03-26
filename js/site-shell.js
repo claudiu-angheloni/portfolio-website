@@ -101,6 +101,9 @@
         const key = node.dataset.i18n;
         if (dictionary[key]) {
           node.textContent = dictionary[key];
+          if (node.hasAttribute("data-sync-text")) {
+            node.dataset.text = dictionary[key];
+          }
         }
       });
 
@@ -153,6 +156,9 @@
 
       syncGlitchHeadings();
       syncCornerTexts();
+      window.dispatchEvent(new CustomEvent("site:language-change", {
+        detail: { lang }
+      }));
     }
 
     function updateActiveMenu(routeId) {

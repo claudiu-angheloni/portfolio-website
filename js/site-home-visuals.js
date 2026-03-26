@@ -1389,7 +1389,7 @@
         document.body.appendChild(projectPanelEdgeLine);
         return projectPanelEdgeLine;
       }
-    
+
       function closeSelectedPin({ restoreHover = true, instant = false } = {}) {
         if (projectPanelCloseTimer) {
           window.clearTimeout(projectPanelCloseTimer);
