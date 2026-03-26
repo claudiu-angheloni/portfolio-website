@@ -63,7 +63,16 @@ study</p>
     const logoMarkup = hero.logoSrc
       ? `
         <span class="glitch-heading-line project-title-logo-line">
-          <img class="project-title-logo" src="${escapeHtml(hero.logoSrc)}" alt="${escapeHtml(hero.logoAlt || "")}" loading="eager" decoding="async">
+          <img
+            class="project-title-logo"
+            src="${escapeHtml(hero.logoSrc)}"
+            alt="${escapeHtml(hero.logoAlt || "")}"
+            width="156"
+            height="121"
+            loading="eager"
+            decoding="async"
+            style="width: clamp(108px, 12vw, 156px); height: auto; display: block;"
+          >
         </span>
       `
       : "";
