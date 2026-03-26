@@ -9,6 +9,7 @@ const entryNames = [
   "about.html",
   "contact.html",
   "project-shg-calgary.html",
+  "project-the-natural-nipple.html",
   "project-portfolio-system.html",
   "styles.css",
   "about.css",

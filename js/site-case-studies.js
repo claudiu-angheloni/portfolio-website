@@ -60,9 +60,17 @@ study</p>
     const lines = hero.titleLines || [];
     const accent = hero.titleAccent || "";
     const dataText = escapeHtml(createDataText(lines, accent));
+    const logoMarkup = hero.logoSrc
+      ? `
+        <span class="glitch-heading-line project-title-logo-line">
+          <img class="project-title-logo" src="${escapeHtml(hero.logoSrc)}" alt="${escapeHtml(hero.logoAlt || "")}" loading="eager" decoding="async">
+        </span>
+      `
+      : "";
 
     return `
       <h1 class="project-contact-heading glitch-heading" data-text="${dataText}">
+        ${logoMarkup}
         ${lines.map((line, index) => {
           const key = `projectHeroTitleLine${index + 1}`;
 
@@ -853,6 +861,208 @@ study</p>
               { label: "Limbaj de motion", value: "Coregrafie CSS si comportamente runtime custom" },
               { label: "Unelte cheie", value: "HTML, CSS, Vanilla JS, Three.js" },
               { label: "Status", value: "In dezvoltare activa" }
+            ]
+          },
+          explore: {
+            link: "Exploreaza proiectele"
+          }
+        }
+      }
+    },
+    {
+      routeId: "projectTheNaturalNipple",
+      pinId: "florida-us",
+      path: "/project-the-natural-nipple.html",
+      aliases: ["/projects/the-natural-nipple", "/projects/the-natural-nipple/", "/project-the-natural-nipple.html"],
+      title: "The Natural Nipple | Claudiu Angheloni",
+      description: "A complete brand and product design project developed in Florida, translating a complex research-driven feeding system into a clear and emotionally reassuring experience.",
+      rail: {
+        primary: "PROJECT",
+        secondary: "THREE"
+      },
+      heroMedia: {
+        type: "image",
+        src: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-hero-02.png",
+        alt: "The Natural Nipple cinematic hero image",
+        position: "50% 50%",
+        frameWidth: "1440px"
+      },
+      gallery: [
+        {
+          src: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-06.png",
+          alt: "The Natural Nipple product and packaging overview",
+          position: "50% 50%",
+          frameWidth: "1440px"
+        },
+        {
+          layout: "pair",
+          frameWidth: "1440px",
+          items: [
+            {
+              src: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-03.png",
+              alt: "The Natural Nipple product system detail image",
+              position: "50% 50%"
+            },
+            {
+              src: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-01.png",
+              alt: "The Natural Nipple product and packaging portrait composition",
+              position: "50% 50%"
+            }
+          ]
+        },
+        {
+          src: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-08.png",
+          alt: "The Natural Nipple cinematic lifestyle composition",
+          position: "50% 50%",
+          frameWidth: "1440px"
+        }
+      ],
+      panel: {
+        title: "The Natural Nipple",
+        clientName: "The Natural Nipple",
+        meta: "Branding / packaging / product visualization",
+        year: "2022",
+        status: "thenaturalnipple.com",
+        description: "A complete brand and product design project developed in Florida, focused on translating a complex, research-driven feeding system into a clear, intuitive, and emotionally reassuring experience.",
+        mediaType: "image",
+        mediaSrc: "assets/portfolio/the-natural-nipple-project/the-natural-nipple-01.png",
+        highlights: [
+          "End-to-end design direction across brand, packaging and visualization",
+          "Minimal, human and intentional design that reduces noise",
+          "Warm cinematic art direction with premium minimal compositions"
+        ],
+        ctaHref: "/projects/the-natural-nipple",
+        ctaLabel: "See the full project"
+      },
+      locales: {
+        en: {
+          footer: "Case\nstudy",
+          hero: {
+            kicker: "Designing a feeding system that feels natural.",
+            titleLines: ["THE NATURAL", "NIPPLE"],
+            titleAccent: "",
+            watermark: "TNN",
+            logoSrc: "assets/portfolio/the-natural-nipple-project/logo/naturalNipple_secondary_color-logo.svg",
+            logoAlt: "The Natural Nipple logo"
+          },
+          overview: {
+            kicker: "Overview",
+            lead: "A complete brand and product design project developed in Florida, focused on translating a complex, research-driven feeding system into a clear, intuitive, and emotionally reassuring experience.",
+            stats: [
+              { label: "System", value: "The Natural Nipple is a fully customizable infant feeding system built around natural breastfeeding principles - shape, feel, and flow." },
+              { label: "Focus", value: "In 2022, the project focused on transforming a complex concept into a refined and accessible brand experience." },
+              { label: "Approach", value: "Minimal, human, and intentional design focused on reducing noise and improving clarity." }
+            ],
+            details: [
+              { label: "Location", value: "Florida" },
+              { label: "Year", value: "2022" },
+              { label: "Website", value: "thenaturalnipple.com" },
+              { label: "My role", value: "End-to-end design direction including branding, packaging, product visualization, and art direction." }
+            ]
+          },
+          framework: {
+            kicker: "Key decisions",
+            titleLines: ["CLARITY THROUGH", "SOFTNESS AND", "STRUCTURE"],
+            items: [
+              {
+                title: "Challenge",
+                body: "Simplifying a complex, research-driven product while maintaining trust, clarity, and emotional softness."
+              },
+              {
+                title: "Approach",
+                body: "Minimal, human, and intentional design focused on reducing noise and improving clarity."
+              },
+              {
+                title: "Packaging",
+                body: "Cylindrical packaging system with clear hierarchy, structured information, and strong visual balance."
+              }
+            ]
+          },
+          gallery: {
+            kicker: "Visual direction",
+            intro: "Cinematic lighting, warm tones, natural textures, premium minimal compositions."
+          },
+          outcomes: {
+            kicker: "Outcome",
+            titleLines: ["A COHESIVE", "SYSTEM THAT", "BUILDS TRUST"],
+            items: [
+              "A cohesive design system that builds trust and simplifies a complex product experience."
+            ]
+          },
+          credits: {
+            kicker: "Project details",
+            items: [
+              { label: "Tools", value: "Adobe Illustrator, Adobe Photoshop, 3D mockup workflows" },
+              { label: "Design system", value: "Soft neutral palette, clean typography, minimal layouts, premium feel" },
+              { label: "Visual direction", value: "Cinematic lighting, warm tones, natural textures, premium minimal compositions." },
+              { label: "Website", value: "thenaturalnipple.com" }
+            ]
+          },
+          explore: {
+            link: "Explore my work"
+          }
+        },
+        ro: {
+          footer: "Studiu\nde caz",
+          hero: {
+            kicker: "Designul unui sistem de hranire care se simte natural.",
+            titleLines: ["THE NATURAL", "NIPPLE"],
+            titleAccent: "",
+            watermark: "TNN",
+            logoSrc: "assets/portfolio/the-natural-nipple-project/logo/naturalNipple_secondary_color-logo.svg",
+            logoAlt: "The Natural Nipple logo"
+          },
+          overview: {
+            kicker: "Overview",
+            lead: "Un proiect complet de branding si product design dezvoltat in Florida, concentrat pe traducerea unui sistem de hranire complex, bazat pe cercetare, intr-o experienta clara, intuitiva si linistitoare emotional.",
+            stats: [
+              { label: "Sistem", value: "The Natural Nipple este un sistem de hranire infantila complet personalizabil, construit in jurul principiilor naturale ale alaptarii - forma, senzatie si flux." },
+              { label: "Focus", value: "In 2022, proiectul s-a concentrat pe transformarea unui concept complex intr-o experienta de brand rafinata si accesibila." },
+              { label: "Abordare", value: "Design minimal, uman si intentionat, concentrat pe reducerea zgomotului si cresterea claritatii." }
+            ],
+            details: [
+              { label: "Locatie", value: "Florida" },
+              { label: "An", value: "2022" },
+              { label: "Website", value: "thenaturalnipple.com" },
+              { label: "Rolul meu", value: "Directie de design end-to-end incluzand branding, packaging, vizualizare de produs si art direction." }
+            ]
+          },
+          framework: {
+            kicker: "Decizii cheie",
+            titleLines: ["CLARITATE PRIN", "STRUCTURA SI", "DELICATETE"],
+            items: [
+              {
+                title: "Provocare",
+                body: "Simplificarea unui produs complex, bazat pe cercetare, pastrand in acelasi timp increderea, claritatea si delicatetea emotionala."
+              },
+              {
+                title: "Abordare",
+                body: "Design minimal, uman si intentionat, concentrat pe reducerea zgomotului si cresterea claritatii."
+              },
+              {
+                title: "Packaging",
+                body: "Sistem cilindric de ambalare cu ierarhie clara, informatie structurata si un echilibru vizual puternic."
+              }
+            ]
+          },
+          gallery: {
+            kicker: "Directie vizuala",
+            intro: "Lumina cinematica, tonuri calde, texturi naturale, compozitii minimale premium."
+          },
+          outcomes: {
+            kicker: "Rezultat",
+            titleLines: ["UN SISTEM", "COEZIV CARE", "CONSTRUIESTE INCREDERE"],
+            items: [
+              "Un sistem de design coerent care construieste incredere si simplifica experienta unui produs complex."
+            ]
+          },
+          credits: {
+            kicker: "Detalii proiect",
+            items: [
+              { label: "Tools", value: "Adobe Illustrator, Adobe Photoshop, fluxuri 3D mockup" },
+              { label: "Sistem de design", value: "Paleta neutra, tipografie curata, layout-uri minimale, feel premium" },
+              { label: "Directie vizuala", value: "Lumina cinematica, tonuri calde, texturi naturale, compozitii minimale premium." },
+              { label: "Website", value: "thenaturalnipple.com" }
             ]
           },
           explore: {

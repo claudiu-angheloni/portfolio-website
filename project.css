@@ -360,6 +360,20 @@ body.project-page.menu-open.menu-closing::after {
   gap: 10px;
 }
 
+.project-title-logo {
+  width: clamp(92px, 12vw, 156px);
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.project-title-logo-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
 .project-section-title {
   max-width: 720px;
   font-size: clamp(2.18rem, 3.22vw, 3.72rem);

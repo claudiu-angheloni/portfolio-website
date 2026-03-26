@@ -25,9 +25,12 @@ const routeAliases = new Map([
   ["/about.html", "/about.html"],
   ["/contact.html", "/contact.html"],
   ["/project-shg-calgary.html", "/project-shg-calgary.html"],
+  ["/project-the-natural-nipple.html", "/project-the-natural-nipple.html"],
   ["/project-portfolio-system.html", "/project-portfolio-system.html"],
   ["/projects/linxx", "/project-shg-calgary.html"],
   ["/projects/linxx/", "/project-shg-calgary.html"],
+  ["/projects/the-natural-nipple", "/project-the-natural-nipple.html"],
+  ["/projects/the-natural-nipple/", "/project-the-natural-nipple.html"],
   ["/projects/portfolio-system", "/project-portfolio-system.html"],
   ["/projects/portfolio-system/", "/project-portfolio-system.html"]
 ]);
