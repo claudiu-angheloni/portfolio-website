@@ -35,6 +35,7 @@
     preparePageShellIntro,
     resetRouteBehaviors,
     scheduleProjectScrollIndicatorSetup,
+    setupClassicPortfolioScroll,
     setupAboutFooterReveal,
     setupProjectFooterReveal,
     setupRevealBlocks,
@@ -208,6 +209,13 @@
         ]);
       }
 
+      if (routeId === "portfolioClassic") {
+        window.SiteAudio.bindInteractiveSounds([
+          ".classic-inline-link",
+          ".classic-project-link"
+        ]);
+      }
+
       if (isProjectRoute({ id: routeId })) {
         window.SiteAudio.bindInteractiveSounds([
           ".project-explore-link"
@@ -312,6 +320,9 @@
         if (route.id === "contact") {
           bindContactForm();
           configureExternalLinks(".contact-social-link[href]", "Profile link coming soon");
+        }
+        if (route.id === "portfolioClassic") {
+          setupClassicPortfolioScroll();
         }
       }
 

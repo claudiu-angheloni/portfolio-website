@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Claudiu Angheloni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta id="meta-description" name="description" content="A classic editorial portfolio view of Claudiu Angheloni's selected case studies across hospitality branding, product storytelling and digital presentation systems.">
+    <meta id="meta-theme-color" name="theme-color" content="#ffffff">
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/logo.svg" as="image" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body.pointer-idle .menu-trigger {
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        border: 0;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      body.pointer-idle .menu-trigger .menu-icon::after,
+      body.pointer-idle .menu-trigger:hover .menu-icon::after,
+      body.pointer-idle .menu-trigger:focus .menu-icon::after,
+      body.pointer-idle .menu-trigger:focus-visible .menu-icon::after {
+        width: 0 !important;
+        transition: none !important;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link id="page-style" rel="stylesheet" href="">
+  </head>
+  <body class="app-shell is-loading pointer-idle">
+    <noscript>
+      <style>
+        body {
+          overflow: auto;
+        }
+
+        .site-loader,
+        #stars,
+        #globe-root,
+        .grid-lines,
+        .overlay {
+          display: none !important;
+        }
+
+        .no-script-fallback {
+          min-height: 100vh;
+          display: grid;
+          place-items: center;
+          padding: 32px;
+          text-align: center;
+          background: #050608;
+          color: rgba(255, 255, 255, 0.92);
+          font-family: "Barlow Condensed", sans-serif;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+      </style>
+      <div class="no-script-fallback">
+        JavaScript is required to view this site.
+      </div>
+    </noscript>
+
+    <div class="site-loader" aria-hidden="true">
+      <div class="site-loader-inner">
+        <div class="site-loader-mark site-loader-glitch">
+          <img class="site-loader-logo-base" src="assets/logo.svg" alt="" width="36" height="36" decoding="async">
+          <span class="site-loader-logo-layer site-loader-logo-layer-a" aria-hidden="true"></span>
+          <span class="site-loader-logo-layer site-loader-logo-layer-b" aria-hidden="true"></span>
+          <span class="site-loader-logo-layer site-loader-logo-layer-c" aria-hidden="true"></span>
+          <span class="site-loader-logo-layer site-loader-logo-layer-d" aria-hidden="true"></span>
+          <span class="site-loader-logo-flash" aria-hidden="true"></span>
+        </div>
+        <p class="site-loader-label site-loader-label-glitch">
+          <span class="site-loader-label-base">Loading</span>
+          <span class="site-loader-label-layer site-loader-label-layer-a" aria-hidden="true">Loading</span>
+          <span class="site-loader-label-layer site-loader-label-layer-b" aria-hidden="true">Loading</span>
+        </p>
+      </div>
+    </div>
+
+    <canvas id="stars"></canvas>
+    <div id="globe-root" aria-hidden="true"></div>
+
+    <div class="overlay">
+      <div class="grid-lines" aria-hidden="true">
+        <div class="grid-line"><span class="grid-marker"></span></div>
+        <div class="grid-line"><span class="grid-marker"></span></div>
+        <div class="grid-line"><span class="grid-marker"></span></div>
+        <div class="grid-line"><span class="grid-marker"></span></div>
+      </div>
+
+      <div class="ui-shell">
+        <div class="ui-inner">
+          <button class="menu-trigger" type="button" aria-label="Open menu" aria-controls="menu-panel" aria-expanded="false">
+            <span class="menu-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="menu-label" data-i18n="menu">Menu</span>
+          </button>
+
+          <div class="language-switch" aria-label="Language switcher" data-i18n-aria-label="languageSwitcher">
+            <button class="language-option is-active" type="button" data-lang="en">EN</button>
+            <button class="language-option" type="button" data-lang="ro">RO</button>
+          </div>
+
+          <div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Primary menu" aria-hidden="true" data-i18n-aria-label="primaryMenu">
+            <div class="menu-art">
+              <span class="menu-art-base" aria-hidden="true"></span>
+              <span class="menu-art-layer menu-art-layer-a" aria-hidden="true"></span>
+              <span class="menu-art-layer menu-art-layer-b" aria-hidden="true"></span>
+              <span class="menu-art-line menu-art-line-a" aria-hidden="true"></span>
+              <span class="menu-art-line menu-art-line-b" aria-hidden="true"></span>
+            </div>
+
+            <nav class="menu-nav" aria-label="Primary">
+              <a class="menu-link" href="index.html" data-route-link="home" data-i18n="home"><span class="menu-link-label">Home</span></a>
+              <a class="menu-link" href="about.html" data-route-link="about" data-i18n="about"><span class="menu-link-label">About me</span></a>
+              <a class="menu-link" href="#portfolio" data-route-link="portfolio" data-i18n="portfolio"><span class="menu-link-label">Portfolio</span></a>
+              <a class="menu-link" href="contact.html" data-route-link="contact" data-i18n="contact"><span class="menu-link-label">Contact</span></a>
+            </nav>
+          </div>
+
+          <div id="route-shell"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-root"></div>
+
+    <script src="audio.js"></script>
+    <script src="js/site-content.js"></script>
+    <script src="js/site-case-studies.js"></script>
+    <script src="js/site-utils.js"></script>
+    <script src="js/site-shell.js"></script>
+    <script src="js/site-page-behaviors.js"></script>
+    <script src="js/site-router.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1168,6 +1168,15 @@ body.menu-closing.menu-home-reveal .hero-subtitle {
   z-index: 1;
 }
 
+.globe-action-secondary {
+  color: rgba(255, 255, 255, 0.76);
+  letter-spacing: 0.16em;
+}
+
+.globe-action-secondary .globe-action-line {
+  background: rgba(255, 255, 255, 0.72);
+}
+
 .globe-action:hover .globe-action-line,
 .globe-action:focus-visible .globe-action-line {
   width: calc(100% + 10px);

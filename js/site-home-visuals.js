@@ -167,11 +167,25 @@
       exploreAction.type = "button";
       exploreAction.className = "globe-action";
       exploreAction.setAttribute("aria-label", "Explore my work");
+      exploreAction.dataset.i18nAriaLabel = "globeCtaAria";
       exploreAction.innerHTML = `
         <span class="globe-action-line" aria-hidden="true"></span>
         <span class="globe-action-label" data-i18n="globeCta">EXPLORE MY WORK!</span>
       `;
       document.body.appendChild(exploreAction);
+
+      const classicAction = document.createElement("button");
+      classicAction.type = "button";
+      classicAction.className = "globe-action globe-action-secondary";
+      classicAction.setAttribute("aria-label", "Open classic portfolio view");
+      classicAction.dataset.i18nAriaLabel = "globeClassicCtaAria";
+      classicAction.innerHTML = `
+        <span class="globe-action-line" aria-hidden="true"></span>
+        <span class="globe-action-label" data-i18n="globeClassicCta">CLASSIC VIEW</span>
+      `;
+      document.body.appendChild(classicAction);
+
+      const globeActions = [exploreAction, classicAction];
     
       const pinLabel = document.createElement("div");
       pinLabel.className = "globe-pin-label";
@@ -1149,7 +1163,9 @@
         }
         syncHomePortfolioUrl(active && titleExit);
         exploreAction.disabled = active;
+        classicAction.disabled = false;
         exploreAction.style.pointerEvents = active ? "none" : "auto";
+        classicAction.style.pointerEvents = active ? "auto" : "none";
         if (active) {
           exploreActionPresenceTarget = 0;
         }
@@ -1609,10 +1625,15 @@
         const narrowViewport = window.innerWidth <= 700;
         const actionY = centerY + projectedRadius + (narrowViewport ? 18 : 40);
         const actionPresence = easeInOut(exploreActionPresence);
-        const actionOpacity = isVisible
+        const exploreOpacity = isVisible
           ? Math.max(0, 0.92 - focusEase * 1.25) * actionPresence * exploreActionMenuReveal
           : 0;
+        const classicOpacity = isVisible
+          ? Math.max(0, Math.min(focusEase * 1.35, 0.94)) * exploreActionMenuReveal
+          : 0;
         const actionOffsetX = (actionPresence - 1) * 28 + (exploreActionMenuReveal - 1) * 18;
+        const classicOffsetX = (1 - focusEase) * 22 + (exploreActionMenuReveal - 1) * 18;
+        const classicOffsetY = (1 - focusEase) * 14;
         if (exploreActionLockPending) {
           exploreActionLockedX = centerX;
           exploreActionLockedY = actionY;
@@ -1623,28 +1644,58 @@
         const actionX = exploreActionLocked ? exploreActionLockedX : centerX;
         const actionTop = exploreActionLocked ? exploreActionLockedY : actionY;
         const actionYOffset = exploreActionLocked ? 0 : focusEase * 10;
-        const actionBounds = exploreAction.getBoundingClientRect();
-        const actionHalfWidth = (actionBounds.width || 144) * 0.5;
         const actionSafeInset = narrowViewport ? 20 : 32;
-        const maxActionX = Math.max(
-          actionSafeInset + actionHalfWidth,
-          window.innerWidth - actionSafeInset - actionHalfWidth
-        );
-        const clampedActionX = clamp(
-          actionX,
-          actionSafeInset + actionHalfWidth,
-          maxActionX
-        );
-        const clampedActionTop = narrowViewport
+        const clampedExploreTop = narrowViewport
           ? Math.min(actionTop, window.innerHeight - 108)
           : actionTop;
+        const primaryBounds = exploreAction.getBoundingClientRect();
+        const secondaryBounds = classicAction.getBoundingClientRect();
+        const primaryWidth = primaryBounds.width || 154;
+        const secondaryWidth = secondaryBounds.width || 142;
+        const classicTargetX = centerX + projectedRadius * (narrowViewport ? 0.42 : 0.72);
+        const classicTargetYBase = centerY + projectedRadius * (narrowViewport ? 0.54 : 0.76);
+        const clampedClassicTop = Math.min(classicTargetYBase, window.innerHeight - (narrowViewport ? 86 : 112));
 
-        exploreAction.style.left = `${clampedActionX}px`;
-        exploreAction.style.top = `${clampedActionTop}px`;
-        exploreAction.style.opacity = String(actionOpacity);
-        exploreAction.style.pointerEvents = isVisible && !projectsFocusActive && actionPresence > 0.96 && exploreActionMenuReveal > 0.96 ? "auto" : "none";
-        exploreAction.style.visibility = actionOpacity > 0.01 ? "visible" : "hidden";
-        exploreAction.style.transform = `translateX(-50%) translate3d(${actionOffsetX}px, ${actionYOffset}px, 0)`;
+        function placeAction(actionNode, targetX, targetY, width, translateX, translateY, opacity, isActive) {
+          const actionHalfWidth = width * 0.5;
+          const maxActionX = Math.max(
+            actionSafeInset + actionHalfWidth,
+            window.innerWidth - actionSafeInset - actionHalfWidth
+          );
+          const clampedActionX = clamp(
+            targetX,
+            actionSafeInset + actionHalfWidth,
+            maxActionX
+          );
+
+          actionNode.style.left = `${clampedActionX}px`;
+          actionNode.style.top = `${targetY}px`;
+          actionNode.style.opacity = String(opacity);
+          actionNode.style.pointerEvents = isVisible && isActive && exploreActionMenuReveal > 0.96 ? "auto" : "none";
+          actionNode.style.visibility = opacity > 0.01 ? "visible" : "hidden";
+          actionNode.style.transform = `translateX(-50%) translate3d(${translateX}px, ${translateY}px, 0)`;
+        }
+
+        placeAction(
+          exploreAction,
+          actionX,
+          clampedExploreTop,
+          primaryWidth,
+          actionOffsetX,
+          actionYOffset,
+          exploreOpacity,
+          !projectsFocusActive && actionPresence > 0.96
+        );
+        placeAction(
+          classicAction,
+          classicTargetX,
+          clampedClassicTop,
+          secondaryWidth,
+          classicOffsetX,
+          classicOffsetY,
+          classicOpacity,
+          projectsFocusActive && focusEase > 0.56
+        );
       }
     
       function animate(time) {
@@ -1843,6 +1894,10 @@
           titleExit: true
         });
       });
+      classicAction.addEventListener("click", () => {
+        if (projectsFocusActive) return;
+        navigateToRoute(normalizePath("/portfolio-classic.html"));
+      });
       projectPanelClose.addEventListener("click", () => {
         closeSelectedPin();
       });
@@ -1998,7 +2053,9 @@
                 projectsFocusProgress = 1;
                 projectsFocusDelayRemaining = 0;
                 projectsFocusActive = false;
-                exploreAction.disabled = false;
+                globeActions.forEach((actionNode) => {
+                  actionNode.disabled = false;
+                });
                 exploreActionPresence = 0;
                 exploreActionPresenceTarget = 0;
                 exploreActionLocked = false;
@@ -2051,9 +2108,11 @@
             orbitIndicator.style.visibility = "hidden";
             orbitGuideGroup.visible = active;
             pinGroup.visible = active && projectsFocusProgress > 0.16;
-            exploreAction.style.opacity = active ? "1" : "0";
-            exploreAction.style.visibility = active ? "visible" : "hidden";
-            exploreAction.style.pointerEvents = active ? "auto" : "none";
+            globeActions.forEach((actionNode) => {
+              actionNode.style.opacity = active ? "1" : "0";
+              actionNode.style.visibility = active ? "visible" : "hidden";
+              actionNode.style.pointerEvents = active ? "auto" : "none";
+            });
     
             if (!active && !keepStars) {
               drag.active = false;

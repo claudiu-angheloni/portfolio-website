@@ -8,6 +8,20 @@
   const PROJECT_BODY_CLASS = "project-page project-page-dark";
   const PROJECT_PAGE_STYLE = "project.css";
   const PROJECT_THEME_COLOR = "#050608";
+  const SHELTER_DRINKS_ICON_DEFS = [
+    { src: "assets/portfolio/shg-project/shelter-icons-01.svg", label: "Shelter drinks icon 01", width: 28.58, height: 51.966 },
+    { src: "assets/portfolio/shg-project/shelter-icons-02.svg", label: "Shelter drinks icon 02", width: 22.97, height: 48.052 },
+    { src: "assets/portfolio/shg-project/shelter-icons-03.svg", label: "Shelter drinks icon 03", width: 29.382, height: 46.83 },
+    { src: "assets/portfolio/shg-project/shelter-icons-04.svg", label: "Shelter drinks icon 04", width: 24.339, height: 59.513 },
+    { src: "assets/portfolio/shg-project/shelter-icons-05.svg", label: "Shelter drinks icon 05", width: 29.71, height: 54.37 },
+    { src: "assets/portfolio/shg-project/shelter-icons-06.svg", label: "Shelter drinks icon 06", width: 24.366, height: 55.052 },
+    { src: "assets/portfolio/shg-project/shelter-icons-07.svg", label: "Shelter drinks icon 07", width: 21.434, height: 48.981 },
+    { src: "assets/portfolio/shg-project/shelter-icons-08.svg", label: "Shelter drinks icon 08", width: 20.114, height: 35.328 },
+    { src: "assets/portfolio/shg-project/shelter-icons-09.svg", label: "Shelter drinks icon 09", width: 35.897, height: 25.256 },
+    { src: "assets/portfolio/shg-project/shelter-icons-10.svg", label: "Shelter drinks icon 10", width: 24.358, height: 42.167 },
+    { src: "assets/portfolio/shg-project/shelter-icons-11.svg", label: "Shelter drinks icon 11", width: 22.658, height: 52.295 },
+    { src: "assets/portfolio/shg-project/shelter-icons-12.svg", label: "Shelter drinks icon 12", width: 32.187, height: 48.951 }
+  ];
 
   const PROJECT_SHELL = `
     <p class="corner-text corner-text-left project-corner-left corner-text-deferred" data-i18n="cornerLeft">Reach
@@ -169,6 +183,8 @@ study</p>
       return "";
     }
 
+    const logosOnly = marks.items.every((item) => item && typeof item === "object" && item.logoSrc);
+
     return `
       <section class="project-venues reveal-block">
         <div class="project-content-shell project-content-shell-rail">
@@ -176,9 +192,26 @@ study</p>
             <div class="project-section-head">
               <span class="project-contact-kicker" data-i18n="projectMarksKicker">${escapeHtml(marks.kicker)}</span>
             </div>
-            <div class="project-venues-grid">
+            <div class="project-venues-grid${logosOnly ? " project-venues-grid-logos-only" : ""}">
               ${marks.items.map((item, index) => `
-                <div class="project-venue-mark" data-i18n="projectMark${index + 1}">${escapeHtml(item)}</div>
+                <div
+                  class="project-venue-mark${item && typeof item === "object" && item.logoSrc ? " project-venue-mark-has-logo" : ""}"
+                  ${item && typeof item === "object" && item.logoSrc
+                    ? `aria-label="${escapeHtml(item.logoAlt || item.label || "")}"`
+                    : `data-i18n="projectMark${index + 1}"`}
+                >
+                  ${item && typeof item === "object" && item.logoSrc
+                    ? `
+                      <img
+                        class="project-venue-mark-logo${item.logoClass ? ` ${escapeHtml(item.logoClass)}` : ""}"
+                        src="${escapeHtml(item.logoSrc)}"
+                        alt="${escapeHtml(item.logoAlt || item.label || "")}"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    `
+                    : escapeHtml(item && typeof item === "object" ? item.label : item)}
+                </div>
               `).join("")}
             </div>
           </div>
@@ -250,6 +283,62 @@ study</p>
     }).join("");
   }
 
+  function renderGalleryFocus(content) {
+    if (!content || !content.kicker || !content.href || !content.label) {
+      return "";
+    }
+
+    return `
+      <div class="project-gallery-focus reveal-block">
+        <div class="project-gallery-focus-copy">
+          <span class="project-contact-kicker" data-i18n="projectGalleryFocusKicker">${escapeHtml(content.kicker)}</span>
+          <a
+            class="project-gallery-focus-link"
+            href="${escapeHtml(content.href)}"
+            target="_blank"
+            rel="noreferrer noopener"
+            data-i18n="projectGalleryFocusLabel"
+          >${escapeHtml(content.label)}</a>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderDrinksIconsSection(content) {
+    if (!content || !Array.isArray(content.icons) || !content.icons.length) {
+      return "";
+    }
+
+    return `
+      <section class="project-drinks-icons">
+        <div class="project-content-shell project-content-shell-rail reveal-block">
+          <div class="project-copy-column">
+            <div class="project-section-head">
+              <span class="project-contact-kicker" data-i18n="projectDrinksIconsKicker">${escapeHtml(content.kicker)}</span>
+            </div>
+            <p class="project-overview-lead" data-i18n="projectDrinksIconsBody">${escapeHtml(content.body)}</p>
+            <div class="project-drinks-icons-grid">
+              ${content.icons.map((icon) => `
+                <figure
+                  class="project-drinks-icon"
+                  aria-label="${escapeHtml(icon.label)}"
+                  style="--icon-width: ${escapeHtml(icon.width)}; --icon-height: ${escapeHtml(icon.height)};"
+                >
+                  <img
+                    src="${escapeHtml(icon.src)}"
+                    alt="${escapeHtml(icon.label)}"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </figure>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderOutcomeItems(items) {
     return (items || []).map((item, index) => `
       <p data-i18n="projectOutcomeItem${index + 1}">${escapeHtml(item)}</p>
@@ -307,8 +396,18 @@ study</p>
     if (content.marks && Array.isArray(content.marks.items) && content.marks.items.length) {
       dictionary.projectMarksKicker = content.marks.kicker;
       content.marks.items.forEach((item, index) => {
-        dictionary[`projectMark${index + 1}`] = item;
+        dictionary[`projectMark${index + 1}`] = item && typeof item === "object" ? item.label : item;
       });
+    }
+
+    if (content.gallery && content.gallery.focus) {
+      dictionary.projectGalleryFocusKicker = content.gallery.focus.kicker;
+      dictionary.projectGalleryFocusLabel = content.gallery.focus.label;
+    }
+
+    if (content.drinksIcons) {
+      dictionary.projectDrinksIconsKicker = content.drinksIcons.kicker;
+      dictionary.projectDrinksIconsBody = content.drinksIcons.body;
     }
 
     (content.framework.titleLines || []).forEach((line, index) => {
@@ -436,10 +535,15 @@ study</p>
                     <p class="project-overview-lead" data-i18n="projectGalleryIntro">${escapeHtml(content.gallery.intro)}</p>
                   </div>
                 </div>
+                <div class="project-gallery-media-band">
+                  ${renderGalleryFocus(content.gallery.focus)}
+                </div>
                 <div class="project-gallery-media-stack">
                   ${renderGalleryItems(definition.gallery)}
                 </div>
               </section>
+
+              ${renderDrinksIconsSection(content.drinksIcons)}
 
               <section class="project-outcomes reveal-block">
                 <div class="project-content-shell project-content-shell-rail">
@@ -495,14 +599,60 @@ study</p>
       },
       gallery: [
         {
-          src: "assets/portfolio/shg-project/calgary.png",
-          alt: "Syndicate Hospitality Group brand presentation overview"
+          src: "assets/portfolio/shg-project/shelter-01.jpg",
+          alt: "Shelter Cocktail Bar hospitality brand application overview",
+          position: "50% 50%",
+          frameWidth: "1440px"
         },
         {
-          src: "assets/portfolio/shg-project/calgary.png",
-          alt: "Syndicate Hospitality Group venue-facing visual system detail",
-          position: "50% 38%",
-          imageClass: "project-gallery-image-secondary"
+          layout: "pair",
+          frameWidth: "1440px",
+          items: [
+            {
+              src: "assets/portfolio/shg-project/shelter-02.jpg",
+              alt: "Shelter Cocktail Bar branded print detail",
+              position: "50% 50%"
+            },
+            {
+              src: "assets/portfolio/shg-project/shelter-04.jpg",
+              alt: "Shelter Cocktail Bar branded collateral detail",
+              position: "50% 50%"
+            }
+          ]
+        },
+        {
+          src: "assets/portfolio/shg-project/shelter-03.png",
+          alt: "Shelter Cocktail Bar menu and identity presentation",
+          position: "50% 50%",
+          frameWidth: "1440px"
+        },
+        {
+          src: "assets/portfolio/shg-project/shelter-06.jpg",
+          alt: "Shelter Cocktail Bar brand system surface",
+          position: "50% 50%",
+          frameWidth: "1440px"
+        },
+        {
+          layout: "pair",
+          frameWidth: "1440px",
+          items: [
+            {
+              src: "assets/portfolio/shg-project/shelter-05.jpg",
+              alt: "Shelter Cocktail Bar menu composition detail",
+              position: "50% 50%"
+            },
+            {
+              src: "assets/portfolio/shg-project/shelter-07.jpg",
+              alt: "Shelter Cocktail Bar campaign framing detail",
+              position: "50% 50%"
+            }
+          ]
+        },
+        {
+          src: "assets/portfolio/shg-project/shelter-08.png",
+          alt: "Shelter Cocktail Bar hospitality brand presentation wide layout",
+          position: "50% 50%",
+          frameWidth: "1440px"
         }
       ],
       panel: {
@@ -549,7 +699,20 @@ study</p>
           },
           marks: {
             kicker: "Venues included",
-            items: ["FORTUNA'S ROW", "SHELTER COCKTAIL BAR", "ORCHARD RESTAURANT", "MASA MAMA TAQUERIA"]
+            items: [
+              {
+                label: "SHELTER COCKTAIL BAR",
+                logoSrc: "assets/portfolio/shg-project/shelter-logo.svg",
+                logoAlt: "Shelter Cocktail Bar logo",
+                logoClass: "project-venue-mark-logo-shelter"
+              },
+              {
+                label: "FORTUNA'S ROW",
+                logoSrc: "assets/portfolio/shg-project/fortunas-row-logo.svg",
+                logoAlt: "Fortuna's Row logo",
+                logoClass: "project-venue-mark-logo-fortunas-row"
+              }
+            ]
           },
           framework: {
             kicker: "Goals of the project",
@@ -571,7 +734,17 @@ study</p>
           },
           gallery: {
             kicker: "Selected work",
-            intro: "The project spans multiple venues and asset types, so the visual sequence focuses on atmosphere first, then the framing and polish that hold the system together."
+            intro: "A Shelter-focused sequence to preview how the SHG case study can open up into venue-specific visual chapters without losing the pacing of the larger system.",
+            focus: {
+              kicker: "Shelter Cocktail Bar",
+              href: "https://shelteryyc.com/",
+              label: "shelteryyc.com"
+            }
+          },
+          drinksIcons: {
+            kicker: "Drinks icons",
+            body: "A modular icon language for presenting glassware, ingredients and drink details in a way that feels tactile, inventive and unmistakably Shelter.",
+            icons: SHELTER_DRINKS_ICON_DEFS
           },
           outcomes: {
             kicker: "Outcome",
@@ -620,7 +793,20 @@ study</p>
           },
           marks: {
             kicker: "Venues incluse",
-            items: ["FORTUNA'S ROW", "SHELTER COCKTAIL BAR", "ORCHARD RESTAURANT", "MASA MAMA TAQUERIA"]
+            items: [
+              {
+                label: "SHELTER COCKTAIL BAR",
+                logoSrc: "assets/portfolio/shg-project/shelter-logo.svg",
+                logoAlt: "Shelter Cocktail Bar logo",
+                logoClass: "project-venue-mark-logo-shelter"
+              },
+              {
+                label: "FORTUNA'S ROW",
+                logoSrc: "assets/portfolio/shg-project/fortunas-row-logo.svg",
+                logoAlt: "Fortuna's Row logo",
+                logoClass: "project-venue-mark-logo-fortunas-row"
+              }
+            ]
           },
           framework: {
             kicker: "Obiectivele proiectului",
@@ -642,7 +828,17 @@ study</p>
           },
           gallery: {
             kicker: "Lucrari selectate",
-            intro: "Proiectul acopera mai multe venue-uri si multe tipuri de asset-uri, asa ca secventa vizuala pune accent pe atmosfera, apoi pe framing-ul si polish-ul care tin sistemul unitar."
+            intro: "O secventa concentrata pe Shelter, gandita ca preview pentru felul in care studiul de caz SHG poate fi deschis in capitole vizuale dedicate fiecarui venue fara sa piarda ritmul general.",
+            focus: {
+              kicker: "Shelter Cocktail Bar",
+              href: "https://shelteryyc.com/",
+              label: "shelteryyc.com"
+            }
+          },
+          drinksIcons: {
+            kicker: "Drinks icons",
+            body: "Un limbaj modular de iconuri gandit sa prezinte pahare, ingrediente si detalii de bauturi intr-un mod tactil, inventiv si recognoscibil Shelter.",
+            icons: SHELTER_DRINKS_ICON_DEFS
           },
           outcomes: {
             kicker: "Rezultat",
@@ -1091,4 +1287,363 @@ study</p>
     siteContent.translations.en[definition.routeId] = createProjectDictionary(definition.locales.en);
     siteContent.translations.ro[definition.routeId] = createProjectDictionary(definition.locales.ro);
   });
+
+  if (siteContent.routeTemplates.portfolioClassic) {
+    siteContent.routeTemplates.portfolioClassic.page = `
+      <div class="classic-sequence">
+        <section class="classic-loader-shell classic-loader-shell-dark" data-classic-loader>
+          <div class="classic-loader-stage">
+            <video class="classic-loader-media" autoplay muted loop playsinline poster="assets/portfolio/shg-project/calgary.png">
+              <source src="assets/portfolio/shg-project/shg-1.mp4" type="video/mp4">
+            </video>
+            <div class="classic-loader-overlay">
+              <div class="classic-loader-head">
+                <span class="classic-loader-tag" data-i18n="project1StageLabel">CLASSIC VIEW / 01</span>
+                <span class="classic-loader-kicker" data-i18n="project1Kicker">Hospitality brand system</span>
+              </div>
+              <h1 class="classic-loader-title">
+                <span data-i18n="project1Line1">SYNDICATE</span>
+                <span data-i18n="project1Line2">HOSPITALITY GROUP</span>
+              </h1>
+              <p class="classic-loader-copy" data-i18n="project1Body">A long-term hospitality collaboration shaped across venues, menus, campaigns and launch materials, with Shelter Cocktail Bar currently opening the next chapter of the case study.</p>
+              <div class="classic-loader-progress">
+                <span class="classic-loader-progress-label" data-i18n="loadingLabel">Loading chapter</span>
+                <span class="classic-loader-progress-value" data-classic-progress>000%</span>
+              </div>
+              <span class="classic-loader-progress-bar" aria-hidden="true"><span></span></span>
+            </div>
+          </div>
+        </section>
+
+        <article class="classic-case">
+          <div class="classic-case-shell">
+            <section class="classic-case-intro reveal-block">
+              <div class="classic-case-label-row">
+                <span class="classic-case-kicker" data-i18n="project1Kicker">Hospitality brand system</span>
+                <span class="classic-case-index">01</span>
+              </div>
+              <h2 class="classic-case-title">
+                <span data-i18n="project1Line1">SYNDICATE</span>
+                <span data-i18n="project1Line2">HOSPITALITY GROUP</span>
+              </h2>
+              <p class="classic-case-lead" data-i18n="project1OverviewLead">A hospitality design system that keeps multiple venues aligned while preserving atmosphere, personality and a premium guest-facing tone across menus, campaigns and launch materials.</p>
+              <a class="classic-case-link" href="project-shg-calgary.html" data-i18n="project1Link">Open SHG case study</a>
+            </section>
+
+            <section class="classic-case-details reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseOverviewKicker">Project details</span>
+              </div>
+              <div class="classic-case-details-grid">
+                <p class="classic-case-details-copy" data-i18n="project1OverviewBody">The SHG chapter is built around consistency with tension: elevated visuals, distinct venue personalities and assets that need to work in the real world, not just inside a presentation deck.</p>
+                <dl class="classic-case-meta">
+                  <div>
+                    <dt data-i18n="metaLocationLabel">Location</dt>
+                    <dd data-i18n="project1Location">Calgary, Alberta, Canada</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaScopeLabel">Scope</dt>
+                    <dd data-i18n="project1Scope">Brand systems, menus, campaign assets, venue touchpoints</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaYearLabel">Timeline</dt>
+                    <dd data-i18n="project1Year">2017 - Present</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaRoleLabel">Role</dt>
+                    <dd data-i18n="project1Role">Senior Graphic Designer</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+
+            <section class="classic-case-gallery reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseGalleryKicker">Selected imagery</span>
+              </div>
+              <figure class="classic-gallery-frame classic-gallery-frame-wide">
+                <img src="assets/portfolio/shg-project/calgary.png" alt="Syndicate Hospitality Group overview image" loading="lazy" decoding="async">
+              </figure>
+              <div class="classic-gallery-pair">
+                <figure class="classic-gallery-frame">
+                  <img src="assets/portfolio/shg-project/shelter-03.png" alt="Shelter Cocktail Bar menu and identity presentation" loading="lazy" decoding="async">
+                </figure>
+                <figure class="classic-gallery-frame">
+                  <img src="assets/portfolio/shg-project/shelter-08.png" alt="Shelter Cocktail Bar hospitality brand presentation" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </section>
+
+            <section class="classic-case-notes reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseNotesKicker">What this chapter proves</span>
+              </div>
+              <div class="classic-case-notes-grid">
+                <article><p data-i18n="project1Note1">Multiple venues can share one standard of polish without collapsing into the same visual personality.</p></article>
+                <article><p data-i18n="project1Note2">Menus, collateral and launch assets become part of the atmosphere when they are treated like experience design, not support material.</p></article>
+                <article><p data-i18n="project1Note3">The system stays flexible enough for new concepts, seasonal updates and venue-specific chapters such as Shelter.</p></article>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <section class="classic-loader-shell classic-loader-shell-light" data-classic-loader>
+          <div class="classic-loader-stage">
+            <img class="classic-loader-media" src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-hero-02.png" alt="The Natural Nipple hero image" loading="eager" decoding="async">
+            <div class="classic-loader-overlay">
+              <div class="classic-loader-head">
+                <span class="classic-loader-tag" data-i18n="project2StageLabel">CLASSIC VIEW / 02</span>
+                <span class="classic-loader-kicker" data-i18n="project2Kicker">Branding / packaging / product visualization</span>
+              </div>
+              <h2 class="classic-loader-title">
+                <span data-i18n="project2Line1">THE NATURAL</span>
+                <span data-i18n="project2Line2">NIPPLE</span>
+              </h2>
+              <p class="classic-loader-copy" data-i18n="project2Body">A complete design direction for a feeding system that needed to feel warm, trustworthy and technically clear, from brand language to packaging and premium product visualization.</p>
+              <div class="classic-loader-progress">
+                <span class="classic-loader-progress-label" data-i18n="loadingLabel">Loading chapter</span>
+                <span class="classic-loader-progress-value" data-classic-progress>000%</span>
+              </div>
+              <span class="classic-loader-progress-bar" aria-hidden="true"><span></span></span>
+            </div>
+          </div>
+        </section>
+
+        <article class="classic-case">
+          <div class="classic-case-shell">
+            <section class="classic-case-intro reveal-block">
+              <div class="classic-case-label-row">
+                <span class="classic-case-kicker" data-i18n="project2Kicker">Branding / packaging / product visualization</span>
+                <span class="classic-case-index">02</span>
+              </div>
+              <h2 class="classic-case-title">
+                <span data-i18n="project2Line1">THE NATURAL</span>
+                <span data-i18n="project2Line2">NIPPLE</span>
+              </h2>
+              <p class="classic-case-lead" data-i18n="project2OverviewLead">A product-led case study where softness, trust and technical clarity had to coexist across branding, packaging and premium visualization.</p>
+              <a class="classic-case-link" href="project-the-natural-nipple.html" data-i18n="project2Link">Open The Natural Nipple</a>
+            </section>
+
+            <section class="classic-case-details reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseOverviewKicker">Project details</span>
+              </div>
+              <div class="classic-case-details-grid">
+                <p class="classic-case-details-copy" data-i18n="project2OverviewBody">The work had to simplify a research-heavy product and give it an emotional tone that felt calm, modern and easy to trust from first contact.</p>
+                <dl class="classic-case-meta">
+                  <div>
+                    <dt data-i18n="metaLocationLabel">Location</dt>
+                    <dd data-i18n="project2Location">Florida, USA</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaScopeLabel">Scope</dt>
+                    <dd data-i18n="project2Scope">Branding, packaging, product visualization, art direction</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaYearLabel">Timeline</dt>
+                    <dd data-i18n="project2Year">2022</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaRoleLabel">Role</dt>
+                    <dd data-i18n="project2Role">End-to-end design direction</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+
+            <section class="classic-case-gallery reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseGalleryKicker">Selected imagery</span>
+              </div>
+              <figure class="classic-gallery-frame classic-gallery-frame-wide">
+                <img src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-06.png" alt="The Natural Nipple packaging overview image" loading="lazy" decoding="async">
+              </figure>
+              <div class="classic-gallery-pair">
+                <figure class="classic-gallery-frame">
+                  <img src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-03.png" alt="The Natural Nipple system detail" loading="lazy" decoding="async">
+                </figure>
+                <figure class="classic-gallery-frame">
+                  <img src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-01.png" alt="The Natural Nipple packaging detail" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </section>
+
+            <section class="classic-case-notes reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseNotesKicker">What this chapter proves</span>
+              </div>
+              <div class="classic-case-notes-grid">
+                <article><p data-i18n="project2Note1">Soft visual language can still carry technical clarity when hierarchy and reduction are carefully controlled.</p></article>
+                <article><p data-i18n="project2Note2">Packaging becomes easier to trust when structure, naming and visualization all speak the same tone.</p></article>
+                <article><p data-i18n="project2Note3">Premium minimalism works best when it removes friction rather than simply removing detail.</p></article>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <section class="classic-loader-shell classic-loader-shell-neutral" data-classic-loader>
+          <div class="classic-loader-stage">
+            <img class="classic-loader-media" src="portfolio-state.png" alt="Portfolio system overview image" loading="eager" decoding="async">
+            <div class="classic-loader-overlay">
+              <div class="classic-loader-head">
+                <span class="classic-loader-tag" data-i18n="project3StageLabel">CLASSIC VIEW / 03</span>
+                <span class="classic-loader-kicker" data-i18n="project3Kicker">Self-initiated frontend system</span>
+              </div>
+              <h2 class="classic-loader-title">
+                <span data-i18n="project3Line1">PORTFOLIO</span>
+                <span data-i18n="project3Line2">SYSTEM</span>
+              </h2>
+              <p class="classic-loader-copy" data-i18n="project3Body">The platform itself: a custom portfolio shell built around cinematic home interaction, bilingual routing and reusable case-study architecture designed to grow without losing atmosphere.</p>
+              <div class="classic-loader-progress">
+                <span class="classic-loader-progress-label" data-i18n="loadingLabel">Loading chapter</span>
+                <span class="classic-loader-progress-value" data-classic-progress>000%</span>
+              </div>
+              <span class="classic-loader-progress-bar" aria-hidden="true"><span></span></span>
+            </div>
+          </div>
+        </section>
+
+        <article class="classic-case">
+          <div class="classic-case-shell">
+            <section class="classic-case-intro reveal-block">
+              <div class="classic-case-label-row">
+                <span class="classic-case-kicker" data-i18n="project3Kicker">Self-initiated frontend system</span>
+                <span class="classic-case-index">03</span>
+              </div>
+              <h2 class="classic-case-title">
+                <span data-i18n="project3Line1">PORTFOLIO</span>
+                <span data-i18n="project3Line2">SYSTEM</span>
+              </h2>
+              <p class="classic-case-lead" data-i18n="project3OverviewLead">A self-authored platform built to hold atmosphere, bilingual structure and future case studies inside one motion-led system.</p>
+              <a class="classic-case-link" href="project-portfolio-system.html" data-i18n="project3Link">Open Portfolio System</a>
+            </section>
+
+            <section class="classic-case-details reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseOverviewKicker">Project details</span>
+              </div>
+              <div class="classic-case-details-grid">
+                <p class="classic-case-details-copy" data-i18n="project3OverviewBody">This project turns personal presentation into a scalable frontend system, where the home scene, the editorial pages and the case-study layer all belong to the same authored language.</p>
+                <dl class="classic-case-meta">
+                  <div>
+                    <dt data-i18n="metaLocationLabel">Location</dt>
+                    <dd data-i18n="project3Location">Lugoj, Romania</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaScopeLabel">Scope</dt>
+                    <dd data-i18n="project3Scope">Art direction, frontend system, motion language</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaYearLabel">Timeline</dt>
+                    <dd data-i18n="project3Year">2026 - Current</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="metaRoleLabel">Role</dt>
+                    <dd data-i18n="project3Role">Creative direction and development</dd>
+                  </div>
+                </dl>
+              </div>
+            </section>
+
+            <section class="classic-case-gallery reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseGalleryKicker">Selected imagery</span>
+              </div>
+              <figure class="classic-gallery-frame classic-gallery-frame-wide">
+                <img src="portfolio-state.png" alt="Portfolio system overview image" loading="lazy" decoding="async">
+              </figure>
+              <div class="classic-gallery-pair">
+                <figure class="classic-gallery-frame">
+                  <img src="home-desktop.png" alt="Portfolio home scene image" loading="lazy" decoding="async">
+                </figure>
+                <figure class="classic-gallery-frame">
+                  <img src="contact-desktop.png" alt="Portfolio contact page image" loading="lazy" decoding="async">
+                </figure>
+              </div>
+            </section>
+
+            <section class="classic-case-notes reveal-block">
+              <div class="classic-case-section-head">
+                <span class="classic-case-section-kicker" data-i18n="caseNotesKicker">What this chapter proves</span>
+              </div>
+              <div class="classic-case-notes-grid">
+                <article><p data-i18n="project3Note1">A portfolio can behave like a branded system rather than a collection of disconnected pages.</p></article>
+                <article><p data-i18n="project3Note2">Motion, routing and content architecture become part of the creative direction when they are designed together.</p></article>
+                <article><p data-i18n="project3Note3">The framework is built to absorb future projects without needing a visual reset each time.</p></article>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <section class="classic-sequence-end reveal-block">
+          <div class="classic-case-shell classic-case-shell-end">
+            <div class="classic-case-label-row">
+              <span class="classic-case-kicker" data-i18n="finalKicker">Next step</span>
+              <span class="classic-case-index">04</span>
+            </div>
+            <h2 class="classic-case-title classic-case-title-end">
+              <span data-i18n="finalLine1">CHOOSE THE VIEW</span>
+              <span data-i18n="finalLine2">THAT FITS THE MOMENT</span>
+            </h2>
+            <p class="classic-case-lead classic-case-lead-end" data-i18n="finalBody">Jump back into the immersive globe experience, or continue the conversation directly if the work already feels like the right match.</p>
+            <div class="classic-end-links">
+              <a class="classic-case-link" href="index.html#portfolio" data-i18n="finalPrimaryLink">Return to immersive portfolio</a>
+              <a class="classic-case-link" href="contact.html" data-i18n="finalSecondaryLink">Contact Claudiu</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    `;
+
+    Object.assign(siteContent.translations.en.portfolioClassic, {
+      loadingLabel: "Loading chapter",
+      caseOverviewKicker: "Project details",
+      caseGalleryKicker: "Selected imagery",
+      caseNotesKicker: "What this chapter proves",
+      project1StageLabel: "CLASSIC VIEW / 01",
+      project1OverviewLead: "A hospitality design system that keeps multiple venues aligned while preserving atmosphere, personality and a premium guest-facing tone across menus, campaigns and launch materials.",
+      project1OverviewBody: "The SHG chapter is built around consistency with tension: elevated visuals, distinct venue personalities and assets that need to work in the real world, not just inside a presentation deck.",
+      project1Note1: "Multiple venues can share one standard of polish without collapsing into the same visual personality.",
+      project1Note2: "Menus, collateral and launch assets become part of the atmosphere when they are treated like experience design, not support material.",
+      project1Note3: "The system stays flexible enough for new concepts, seasonal updates and venue-specific chapters such as Shelter.",
+      project2StageLabel: "CLASSIC VIEW / 02",
+      project2OverviewLead: "A product-led case study where softness, trust and technical clarity had to coexist across branding, packaging and premium visualization.",
+      project2OverviewBody: "The work had to simplify a research-heavy product and give it an emotional tone that felt calm, modern and easy to trust from first contact.",
+      project2Note1: "Soft visual language can still carry technical clarity when hierarchy and reduction are carefully controlled.",
+      project2Note2: "Packaging becomes easier to trust when structure, naming and visualization all speak the same tone.",
+      project2Note3: "Premium minimalism works best when it removes friction rather than simply removing detail.",
+      project3StageLabel: "CLASSIC VIEW / 03",
+      project3OverviewLead: "A self-authored platform built to hold atmosphere, bilingual structure and future case studies inside one motion-led system.",
+      project3OverviewBody: "This project turns personal presentation into a scalable frontend system, where the home scene, the editorial pages and the case-study layer all belong to the same authored language.",
+      project3Note1: "A portfolio can behave like a branded system rather than a collection of disconnected pages.",
+      project3Note2: "Motion, routing and content architecture become part of the creative direction when they are designed together.",
+      project3Note3: "The framework is built to absorb future projects without needing a visual reset each time."
+    });
+
+    Object.assign(siteContent.translations.ro.portfolioClassic, {
+      loadingLabel: "Incarcare capitol",
+      caseOverviewKicker: "Detalii proiect",
+      caseGalleryKicker: "Imagery selectat",
+      caseNotesKicker: "Ce demonstreaza acest capitol",
+      project1StageLabel: "CLASSIC VIEW / 01",
+      project1OverviewLead: "Un sistem de design pentru hospitality care tine mai multe venue-uri aliniate, pastrand in acelasi timp atmosfera, personalitatea si un ton premium in meniuri, campanii si materiale de lansare.",
+      project1OverviewBody: "Capitolul SHG este construit in jurul consistentei cu tensiune: vizualuri elevate, personalitati distincte ale venue-urilor si asset-uri care trebuie sa functioneze in lumea reala, nu doar intr-un deck.",
+      project1Note1: "Mai multe venue-uri pot imparti acelasi standard de polish fara sa se prabuseasca intr-o singura personalitate vizuala.",
+      project1Note2: "Meniurile, colateralul si asset-urile de lansare devin parte din atmosfera cand sunt tratate ca design de experienta, nu ca material de suport.",
+      project1Note3: "Sistemul ramane suficient de flexibil pentru concepte noi, update-uri sezoniere si capitole dedicate venue-urilor precum Shelter.",
+      project2StageLabel: "CLASSIC VIEW / 02",
+      project2OverviewLead: "Un studiu de caz orientat spre produs, unde delicatetea, increderea si claritatea tehnica au trebuit sa coexiste in branding, packaging si vizualizare premium.",
+      project2OverviewBody: "Lucrarea a trebuit sa simplifice un produs incarcat de cercetare si sa-i dea un ton emotional calm, modern si usor de crezut de la primul contact.",
+      project2Note1: "Un limbaj vizual soft poate purta in continuare claritate tehnica atunci cand ierarhia si reducerea sunt controlate atent.",
+      project2Note2: "Packaging-ul devine mai usor de crezut cand structura, naming-ul si vizualizarea vorbesc acelasi ton.",
+      project2Note3: "Minimalismul premium functioneaza cel mai bine atunci cand elimina frictiunea, nu doar detaliul.",
+      project3StageLabel: "CLASSIC VIEW / 03",
+      project3OverviewLead: "O platforma auto-initata, construita sa tina impreuna atmosfera, structura bilingva si studiile de caz viitoare intr-un singur sistem ghidat de motion.",
+      project3OverviewBody: "Acest proiect transforma prezentarea personala intr-un sistem frontend scalabil, unde scena din home, paginile editoriale si layer-ul de case study apartin aceluiasi limbaj autoral.",
+      project3Note1: "Un portofoliu se poate comporta ca un sistem de brand, nu doar ca o colectie de pagini separate.",
+      project3Note2: "Motion-ul, routing-ul si arhitectura de continut devin parte din directia creativa atunci cand sunt gandite impreuna.",
+      project3Note3: "Framework-ul este construit sa absoarba proiecte viitoare fara sa aiba nevoie de un reset vizual de fiecare data."
+    });
+  }
+
 })();

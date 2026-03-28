@@ -8,12 +8,14 @@ const entryNames = [
   "index.html",
   "about.html",
   "contact.html",
+  "portfolio-classic.html",
   "project-shg-calgary.html",
   "project-the-natural-nipple.html",
   "project-portfolio-system.html",
   "styles.css",
   "about.css",
   "contact.css",
+  "portfolio-classic.css",
   "project.css",
   "audio.js"
 ];

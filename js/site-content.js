@@ -371,6 +371,267 @@ me</p>
         </div>
       `
     },
+    portfolioClassic: {
+      route: "portfolioClassic",
+      path: "/portfolio-classic.html",
+      aliases: ["/portfolio-classic.html", "/portfolio/classic", "/portfolio/classic/"],
+      bodyClass: "portfolio-classic-page",
+      pageStyle: "portfolio-classic.css",
+      title: "Classic View | Claudiu Angheloni",
+      description: "A classic editorial portfolio view of Claudiu Angheloni's selected case studies across hospitality branding, product storytelling and digital presentation systems.",
+      themeColor: "#ffffff",
+      shell: `
+        <p class="corner-text corner-text-left" data-i18n="cornerLeft">Reach
+perfection</p>
+        <div class="bottom-logo classic-bottom-logo">
+          <img class="bottom-logo-base" src="assets/logo.svg" alt="Claudiu Angheloni logo" width="36" height="36" decoding="async">
+          <span class="bottom-logo-layer bottom-logo-layer-a" aria-hidden="true"></span>
+          <span class="bottom-logo-layer bottom-logo-layer-b" aria-hidden="true"></span>
+          <span class="bottom-logo-layer bottom-logo-layer-c" aria-hidden="true"></span>
+        </div>
+        <p class="corner-text corner-text-right" data-i18n="footerPage">Classic
+view</p>
+      `,
+      page: `
+        <div class="classic-page-shell">
+          <main class="classic-layout">
+            <aside class="classic-rail" aria-hidden="true">
+              <div class="classic-rail-word">PORTFOLIO</div>
+              <div class="classic-rail-divider"></div>
+              <div class="classic-rail-word classic-rail-word-mirror">CLASSIC</div>
+            </aside>
+
+            <section class="classic-content">
+              <article class="classic-hero reveal-block is-visible">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="heroKicker">Classic portfolio</span>
+                  <span class="classic-chip">2026</span>
+                </div>
+
+                <div class="classic-hero-head">
+                  <h1 class="classic-heading classic-heading-hero">
+                    <span class="classic-heading-muted" data-i18n="heroEyebrow">(SELECTION)</span>
+                    <span class="classic-heading-line" data-i18n="heroLine1">A CLASSIC READ</span>
+                    <span class="classic-heading-line" data-i18n="heroLine2">OF RECENT WORK</span>
+                  </h1>
+                  <p class="classic-watermark" aria-hidden="true" data-i18n="heroWatermark">ARCHIVE</p>
+                </div>
+
+                <div class="classic-body-copy">
+                  <p data-i18n="heroBody1">This view strips the orbit back and lets the projects breathe as an editorial sequence: white field, precise type, generous rhythm and sharper focus on the work itself.</p>
+                  <p data-i18n="heroBody2">The selection is built from the current case studies already living inside the portfolio, moving from hospitality systems to product storytelling and the portfolio platform behind this site.</p>
+                </div>
+
+                <div class="classic-link-row">
+                  <a class="classic-inline-link" href="index.html#portfolio" data-i18n="immersiveLink">Back to immersive view</a>
+                  <a class="classic-inline-link" href="contact.html" data-i18n="contactLink">Start a conversation</a>
+                </div>
+              </article>
+
+              <section class="classic-thesis reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="thesisKicker">Editorial thesis</span>
+                  <span class="classic-chip classic-chip-soft" data-i18n="thesisWord">EDIT</span>
+                </div>
+                <div class="classic-thesis-grid">
+                  <p class="classic-thesis-lead" data-i18n="thesisLead">A quieter read of the same body of work, built for scanning, comparing and feeling the throughline across very different surfaces.</p>
+                  <div class="classic-thesis-columns" aria-label="Portfolio thesis">
+                    <article class="classic-thesis-item">
+                      <h2 data-i18n="thesisItem1Title">Atmosphere</h2>
+                      <p data-i18n="thesisItem1Body">Each project is framed to show mood first, but never at the expense of clarity or utility.</p>
+                    </article>
+                    <article class="classic-thesis-item">
+                      <h2 data-i18n="thesisItem2Title">Systems</h2>
+                      <p data-i18n="thesisItem2Body">Identity, packaging, motion and interface decisions are treated as one authored system rather than separate deliverables.</p>
+                    </article>
+                    <article class="classic-thesis-item">
+                      <h2 data-i18n="thesisItem3Title">Range</h2>
+                      <p data-i18n="thesisItem3Body">Hospitality, product and digital work sit together here to show consistency of taste across very different contexts.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <article class="classic-project reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="project1Kicker">Hospitality brand system</span>
+                  <span class="classic-project-index">01</span>
+                </div>
+                <div class="classic-project-grid">
+                  <div class="classic-project-copy">
+                    <h2 class="classic-heading">
+                      <span class="classic-heading-line" data-i18n="project1Line1">SYNDICATE</span>
+                      <span class="classic-heading-line" data-i18n="project1Line2">HOSPITALITY GROUP</span>
+                    </h2>
+                    <p class="classic-project-body" data-i18n="project1Body">A long-term hospitality collaboration shaped across venues, menus, campaigns and launch materials, with Shelter Cocktail Bar currently opening the next chapter of the case study.</p>
+                    <dl class="classic-project-meta">
+                      <div>
+                        <dt data-i18n="metaLocationLabel">Location</dt>
+                        <dd data-i18n="project1Location">Calgary, Alberta, Canada</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaScopeLabel">Scope</dt>
+                        <dd data-i18n="project1Scope">Brand systems, menus, campaign assets, venue touchpoints</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaYearLabel">Timeline</dt>
+                        <dd data-i18n="project1Year">2017 - Present</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaRoleLabel">Role</dt>
+                        <dd data-i18n="project1Role">Senior Graphic Designer</dd>
+                      </div>
+                    </dl>
+                    <a class="classic-project-link" href="project-shg-calgary.html" data-i18n="project1Link">Open SHG case study</a>
+                  </div>
+
+                  <div class="classic-project-media classic-project-media-tall">
+                    <figure class="classic-project-frame classic-project-frame-primary">
+                      <img src="assets/portfolio/shg-project/calgary.png" alt="Syndicate Hospitality Group overview frame" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="classic-project-frame classic-project-frame-secondary">
+                      <img src="assets/portfolio/shg-project/shelter-08.png" alt="Shelter Cocktail Bar presentation detail" loading="lazy" decoding="async">
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <article class="classic-project classic-project-reversed reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="project2Kicker">Branding / packaging / product visualization</span>
+                  <span class="classic-project-index">02</span>
+                </div>
+                <div class="classic-project-grid">
+                  <div class="classic-project-copy">
+                    <h2 class="classic-heading">
+                      <span class="classic-heading-line" data-i18n="project2Line1">THE NATURAL</span>
+                      <span class="classic-heading-line" data-i18n="project2Line2">NIPPLE</span>
+                    </h2>
+                    <p class="classic-project-body" data-i18n="project2Body">A complete design direction for a feeding system that needed to feel warm, trustworthy and technically clear, from brand language to packaging and premium product visualization.</p>
+                    <dl class="classic-project-meta">
+                      <div>
+                        <dt data-i18n="metaLocationLabel">Location</dt>
+                        <dd data-i18n="project2Location">Florida, USA</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaScopeLabel">Scope</dt>
+                        <dd data-i18n="project2Scope">Branding, packaging, product visualization, art direction</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaYearLabel">Timeline</dt>
+                        <dd data-i18n="project2Year">2022</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaRoleLabel">Role</dt>
+                        <dd data-i18n="project2Role">End-to-end design direction</dd>
+                      </div>
+                    </dl>
+                    <a class="classic-project-link" href="project-the-natural-nipple.html" data-i18n="project2Link">Open The Natural Nipple</a>
+                  </div>
+
+                  <div class="classic-project-media classic-project-media-wide">
+                    <figure class="classic-project-frame classic-project-frame-primary">
+                      <img src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-06.png" alt="The Natural Nipple packaging overview" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="classic-project-frame classic-project-frame-secondary">
+                      <img src="assets/portfolio/the-natural-nipple-project/the-natural-nipple-01.png" alt="The Natural Nipple product detail" loading="lazy" decoding="async">
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <article class="classic-project reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="project3Kicker">Self-initiated frontend system</span>
+                  <span class="classic-project-index">03</span>
+                </div>
+                <div class="classic-project-grid">
+                  <div class="classic-project-copy">
+                    <h2 class="classic-heading">
+                      <span class="classic-heading-line" data-i18n="project3Line1">PORTFOLIO</span>
+                      <span class="classic-heading-line" data-i18n="project3Line2">SYSTEM</span>
+                    </h2>
+                    <p class="classic-project-body" data-i18n="project3Body">The platform itself: a custom portfolio shell built around cinematic home interaction, bilingual routing and reusable case-study architecture designed to grow without losing atmosphere.</p>
+                    <dl class="classic-project-meta">
+                      <div>
+                        <dt data-i18n="metaLocationLabel">Location</dt>
+                        <dd data-i18n="project3Location">Lugoj, Romania</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaScopeLabel">Scope</dt>
+                        <dd data-i18n="project3Scope">Art direction, frontend system, motion language</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaYearLabel">Timeline</dt>
+                        <dd data-i18n="project3Year">2026 - Current</dd>
+                      </div>
+                      <div>
+                        <dt data-i18n="metaRoleLabel">Role</dt>
+                        <dd data-i18n="project3Role">Creative direction and development</dd>
+                      </div>
+                    </dl>
+                    <a class="classic-project-link" href="project-portfolio-system.html" data-i18n="project3Link">Open Portfolio System</a>
+                  </div>
+
+                  <div class="classic-project-media classic-project-media-screen">
+                    <figure class="classic-project-frame classic-project-frame-primary">
+                      <img src="portfolio-state.png" alt="Portfolio system overview" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="classic-project-frame classic-project-frame-secondary">
+                      <img src="home-desktop.png" alt="Portfolio home scene detail" loading="lazy" decoding="async">
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <section class="classic-practice reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="practiceKicker">Shared discipline</span>
+                  <span class="classic-chip classic-chip-soft" data-i18n="practiceWord">THREAD</span>
+                </div>
+                <div class="classic-practice-head">
+                  <h2 class="classic-heading">
+                    <span class="classic-heading-line" data-i18n="practiceLine1">DIFFERENT SURFACES,</span>
+                    <span class="classic-heading-line" data-i18n="practiceLine2">ONE AUTHORED STANDARD</span>
+                  </h2>
+                  <p data-i18n="practiceBody">Across hospitality, product and digital work, the same standards keep showing up: atmosphere with discipline, typography with restraint and systems that stay flexible under growth.</p>
+                </div>
+                <div class="classic-practice-grid">
+                  <article>
+                    <h3 data-i18n="practiceItem1Title">Atmosphere</h3>
+                    <p data-i18n="practiceItem1Body">Work should feel memorable before it feels explained, but never become decoration for its own sake.</p>
+                  </article>
+                  <article>
+                    <h3 data-i18n="practiceItem2Title">Clarity</h3>
+                    <p data-i18n="practiceItem2Body">Complex products and multi-venue systems still need immediate hierarchy, readable structure and confident reduction.</p>
+                  </article>
+                  <article>
+                    <h3 data-i18n="practiceItem3Title">Longevity</h3>
+                    <p data-i18n="practiceItem3Body">The goal is not a one-off visual hit, but a system that can evolve without losing tone or quality.</p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="classic-final reveal-block">
+                <div class="classic-section-intro">
+                  <span class="classic-kicker" data-i18n="finalKicker">Next step</span>
+                  <span class="classic-project-index">04</span>
+                </div>
+                <h2 class="classic-heading">
+                  <span class="classic-heading-line" data-i18n="finalLine1">CHOOSE THE VIEW</span>
+                  <span class="classic-heading-line" data-i18n="finalLine2">THAT FITS THE MOMENT</span>
+                </h2>
+                <p class="classic-final-body" data-i18n="finalBody">Jump back into the immersive globe experience, or continue the conversation directly if the work already feels like the right match.</p>
+                <div class="classic-link-row classic-link-row-final">
+                  <a class="classic-inline-link" href="index.html#portfolio" data-i18n="finalPrimaryLink">Return to immersive portfolio</a>
+                  <a class="classic-inline-link" href="contact.html" data-i18n="finalSecondaryLink">Contact Claudiu</a>
+                </div>
+              </section>
+            </section>
+          </main>
+        </div>
+      `
+    },
     contact: {
       route: "contact",
       path: "/contact.html",
@@ -604,7 +865,79 @@ perfection</p>
         subtitle: "Brings your ideas to life",
         cornerRight: "Welcome!",
         globeHint: "DRAG TO ROTATE",
-        globeCta: "EXPLORE MY WORK!"
+        globeCta: "EXPLORE MY WORK!",
+        globeCtaAria: "Explore my work",
+        globeClassicCta: "CLASSIC VIEW",
+        globeClassicCtaAria: "Open classic portfolio view"
+      },
+      portfolioClassic: {
+        footerPage: "Classic\nview",
+        heroKicker: "Classic portfolio",
+        heroEyebrow: "(SELECTION)",
+        heroLine1: "A CLASSIC READ",
+        heroLine2: "OF RECENT WORK",
+        heroWatermark: "ARCHIVE",
+        heroBody1: "This view strips the orbit back and lets the projects breathe as an editorial sequence: white field, precise type, generous rhythm and sharper focus on the work itself.",
+        heroBody2: "The selection is built from the current case studies already living inside the portfolio, moving from hospitality systems to product storytelling and the portfolio platform behind this site.",
+        immersiveLink: "Back to immersive view",
+        contactLink: "Start a conversation",
+        thesisKicker: "Editorial thesis",
+        thesisWord: "EDIT",
+        thesisLead: "A quieter read of the same body of work, built for scanning, comparing and feeling the throughline across very different surfaces.",
+        thesisItem1Title: "Atmosphere",
+        thesisItem1Body: "Each project is framed to show mood first, but never at the expense of clarity or utility.",
+        thesisItem2Title: "Systems",
+        thesisItem2Body: "Identity, packaging, motion and interface decisions are treated as one authored system rather than separate deliverables.",
+        thesisItem3Title: "Range",
+        thesisItem3Body: "Hospitality, product and digital work sit together here to show consistency of taste across very different contexts.",
+        metaLocationLabel: "Location",
+        metaScopeLabel: "Scope",
+        metaYearLabel: "Timeline",
+        metaRoleLabel: "Role",
+        project1Kicker: "Hospitality brand system",
+        project1Line1: "SYNDICATE",
+        project1Line2: "HOSPITALITY GROUP",
+        project1Body: "A long-term hospitality collaboration shaped across venues, menus, campaigns and launch materials, with Shelter Cocktail Bar currently opening the next chapter of the case study.",
+        project1Location: "Calgary, Alberta, Canada",
+        project1Scope: "Brand systems, menus, campaign assets, venue touchpoints",
+        project1Year: "2017 - Present",
+        project1Role: "Senior Graphic Designer",
+        project1Link: "Open SHG case study",
+        project2Kicker: "Branding / packaging / product visualization",
+        project2Line1: "THE NATURAL",
+        project2Line2: "NIPPLE",
+        project2Body: "A complete design direction for a feeding system that needed to feel warm, trustworthy and technically clear, from brand language to packaging and premium product visualization.",
+        project2Location: "Florida, USA",
+        project2Scope: "Branding, packaging, product visualization, art direction",
+        project2Year: "2022",
+        project2Role: "End-to-end design direction",
+        project2Link: "Open The Natural Nipple",
+        project3Kicker: "Self-initiated frontend system",
+        project3Line1: "PORTFOLIO",
+        project3Line2: "SYSTEM",
+        project3Body: "The platform itself: a custom portfolio shell built around cinematic home interaction, bilingual routing and reusable case-study architecture designed to grow without losing atmosphere.",
+        project3Location: "Lugoj, Romania",
+        project3Scope: "Art direction, frontend system, motion language",
+        project3Year: "2026 - Current",
+        project3Role: "Creative direction and development",
+        project3Link: "Open Portfolio System",
+        practiceKicker: "Shared discipline",
+        practiceWord: "THREAD",
+        practiceLine1: "DIFFERENT SURFACES,",
+        practiceLine2: "ONE AUTHORED STANDARD",
+        practiceBody: "Across hospitality, product and digital work, the same standards keep showing up: atmosphere with discipline, typography with restraint and systems that stay flexible under growth.",
+        practiceItem1Title: "Atmosphere",
+        practiceItem1Body: "Work should feel memorable before it feels explained, but never become decoration for its own sake.",
+        practiceItem2Title: "Clarity",
+        practiceItem2Body: "Complex products and multi-venue systems still need immediate hierarchy, readable structure and confident reduction.",
+        practiceItem3Title: "Longevity",
+        practiceItem3Body: "The goal is not a one-off visual hit, but a system that can evolve without losing tone or quality.",
+        finalKicker: "Next step",
+        finalLine1: "CHOOSE THE VIEW",
+        finalLine2: "THAT FITS THE MOMENT",
+        finalBody: "Jump back into the immersive globe experience, or continue the conversation directly if the work already feels like the right match.",
+        finalPrimaryLink: "Return to immersive portfolio",
+        finalSecondaryLink: "Contact Claudiu"
       },
       about: {
         footerPage: "About\nme",
@@ -732,7 +1065,79 @@ perfection</p>
         subtitle: "Da viata ideilor tale",
         cornerRight: "Bine ai venit!",
         globeHint: "TRAGE CA SA ROTESTI",
-        globeCta: "EXPLOREAZA PROIECTELE"
+        globeCta: "EXPLOREAZA PROIECTELE",
+        globeCtaAria: "Exploreaza proiectele",
+        globeClassicCta: "CLASSIC VIEW",
+        globeClassicCtaAria: "Deschide portofoliul clasic"
+      },
+      portfolioClassic: {
+        footerPage: "Classic\nview",
+        heroKicker: "Portofoliu clasic",
+        heroEyebrow: "(SELECTIE)",
+        heroLine1: "O LECTURA CLASICA",
+        heroLine2: "A PROIECTELOR RECENTE",
+        heroWatermark: "ARHIVA",
+        heroBody1: "Aceasta versiune lasa deoparte orbita si lasa proiectele sa respire ca o secventa editoriala: camp alb, tipografie precisa, ritm generos si un focus mai clar pe lucrarea in sine.",
+        heroBody2: "Selectia este construita din studiile de caz deja existente in portofoliu, miscandu-se de la sisteme hospitality la storytelling de produs si platforma portfolio din spatele acestui site.",
+        immersiveLink: "Inapoi la versiunea imersiva",
+        contactLink: "Hai sa vorbim",
+        thesisKicker: "Teza editoriala",
+        thesisWord: "EDIT",
+        thesisLead: "O lectura mai calma a aceluiasi corp de lucru, gandita pentru scanare, comparatie si pentru a simti firul comun dintre suprafete foarte diferite.",
+        thesisItem1Title: "Atmosfera",
+        thesisItem1Body: "Fiecare proiect este incadrat astfel incat sa arate mai intai starea, dar niciodata in detrimentul claritatii sau utilitatii.",
+        thesisItem2Title: "Sisteme",
+        thesisItem2Body: "Identitatea, packaging-ul, motion-ul si deciziile de interfata sunt tratate ca un singur sistem autoral, nu ca livrabile separate.",
+        thesisItem3Title: "Amplitudine",
+        thesisItem3Body: "Hospitality, produsul si lucrul digital stau impreuna aici pentru a arata consecventa gustului in contexte foarte diferite.",
+        metaLocationLabel: "Locatie",
+        metaScopeLabel: "Scope",
+        metaYearLabel: "Perioada",
+        metaRoleLabel: "Rol",
+        project1Kicker: "Sistem de brand pentru hospitality",
+        project1Line1: "SYNDICATE",
+        project1Line2: "HOSPITALITY GROUP",
+        project1Body: "O colaborare hospitality de lunga durata, construita prin venue-uri, meniuri, campanii si materiale de lansare, cu Shelter Cocktail Bar deschizand acum urmatorul capitol al studiului de caz.",
+        project1Location: "Calgary, Alberta, Canada",
+        project1Scope: "Sisteme de brand, meniuri, asset-uri de campanie, touchpoint-uri de venue",
+        project1Year: "2017 - Prezent",
+        project1Role: "Senior Graphic Designer",
+        project1Link: "Deschide studiul de caz SHG",
+        project2Kicker: "Branding / packaging / vizualizare de produs",
+        project2Line1: "THE NATURAL",
+        project2Line2: "NIPPLE",
+        project2Body: "O directie completa de design pentru un sistem de hranire care trebuia sa para cald, de incredere si clar tehnic, de la limbajul de brand la packaging si vizualizare premium de produs.",
+        project2Location: "Florida, SUA",
+        project2Scope: "Branding, packaging, vizualizare de produs, directie artistica",
+        project2Year: "2022",
+        project2Role: "Directie de design end-to-end",
+        project2Link: "Deschide The Natural Nipple",
+        project3Kicker: "Sistem frontend initiat intern",
+        project3Line1: "PORTFOLIO",
+        project3Line2: "SYSTEM",
+        project3Body: "Platforma in sine: un shell personalizat de portofoliu construit in jurul interactiunii cinematice din home, routing-ului bilingv si unei arhitecturi reutilizabile de studii de caz, gandita sa creasca fara sa piarda atmosfera.",
+        project3Location: "Lugoj, Romania",
+        project3Scope: "Directie artistica, sistem frontend, limbaj de motion",
+        project3Year: "2026 - Prezent",
+        project3Role: "Directie creativa si development",
+        project3Link: "Deschide Portfolio System",
+        practiceKicker: "Disciplina comuna",
+        practiceWord: "FIR",
+        practiceLine1: "SUPRAFETE DIFERITE,",
+        practiceLine2: "UN SINGUR STANDARD AUTORAL",
+        practiceBody: "In hospitality, produs si lucrul digital, aceleasi standarde continua sa apara: atmosfera cu disciplina, tipografie cu retinere si sisteme care raman flexibile pe masura ce cresc.",
+        practiceItem1Title: "Atmosfera",
+        practiceItem1Body: "Lucrarea trebuie sa fie memorabila inainte sa fie explicata, dar fara sa devina decoratie de dragul decoratiei.",
+        practiceItem2Title: "Claritate",
+        practiceItem2Body: "Produsele complexe si sistemele multi-venue au nevoie in continuare de ierarhie imediata, structura lizibila si capacitatea de a reduce cu incredere.",
+        practiceItem3Title: "Longevitate",
+        practiceItem3Body: "Obiectivul nu este un singur impact vizual, ci un sistem care poate evolua fara sa-si piarda tonul sau calitatea.",
+        finalKicker: "Pasul urmator",
+        finalLine1: "ALEGE VERSIUNEA",
+        finalLine2: "POTRIVITA MOMENTULUI",
+        finalBody: "Intoarce-te in experienta imersiva cu globul sau continua conversatia direct, daca lucrarile se simt deja ca potrivirea potrivita.",
+        finalPrimaryLink: "Revino la portofoliul imersiv",
+        finalSecondaryLink: "Contacteaza-l pe Claudiu"
       },
       about: {
         footerPage: "Despre\nmine",

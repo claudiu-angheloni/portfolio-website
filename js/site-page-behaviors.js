@@ -17,6 +17,9 @@
     let projectRevealResizeHandler = null;
     let aboutMarkerAlignResizeHandler = null;
     let aboutMarkerAlignLanguageHandler = null;
+    let classicPortfolioScrollHandler = null;
+    let classicPortfolioResizeHandler = null;
+    let classicPortfolioAnimationFrame = 0;
     const markerMeasureCanvas = document.createElement("canvas");
     const markerMeasureContext = markerMeasureCanvas.getContext("2d");
 
@@ -63,6 +66,23 @@
       if (aboutMarkerAlignLanguageHandler) {
         window.removeEventListener("site:language-change", aboutMarkerAlignLanguageHandler);
         aboutMarkerAlignLanguageHandler = null;
+      }
+    }
+
+    function clearClassicPortfolioScrollHandlers() {
+      if (classicPortfolioAnimationFrame) {
+        window.cancelAnimationFrame(classicPortfolioAnimationFrame);
+        classicPortfolioAnimationFrame = 0;
+      }
+
+      if (classicPortfolioScrollHandler) {
+        window.removeEventListener("scroll", classicPortfolioScrollHandler);
+        classicPortfolioScrollHandler = null;
+      }
+
+      if (classicPortfolioResizeHandler) {
+        window.removeEventListener("resize", classicPortfolioResizeHandler);
+        classicPortfolioResizeHandler = null;
       }
     }
 
@@ -812,6 +832,68 @@
       waitForWindowLoad().then(runSetup);
     }
 
+    function setupClassicPortfolioScroll() {
+      clearClassicPortfolioScrollHandlers();
+
+      if (!document.body.classList.contains("portfolio-classic-page")) {
+        return;
+      }
+
+      const loaders = Array.from(document.querySelectorAll("[data-classic-loader]"));
+      if (!loaders.length) {
+        return;
+      }
+
+      const updateClassicPortfolioProgress = () => {
+        classicPortfolioAnimationFrame = 0;
+
+        if (!document.body.classList.contains("portfolio-classic-page")) {
+          return;
+        }
+
+        const scrollTop = Math.max(
+          window.scrollY,
+          document.documentElement.scrollTop || 0,
+          document.body.scrollTop || 0
+        );
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        loaders.forEach((loader) => {
+          const start = loader.offsetTop;
+          const end = start + Math.max(loader.offsetHeight - viewportHeight, 1);
+          const progress = Math.min(Math.max((scrollTop - start) / Math.max(end - start, 1), 0), 1);
+          const percent = Math.round(progress * 100);
+          const progressNode = loader.querySelector("[data-classic-progress]");
+
+          loader.style.setProperty("--classic-load-progress", progress.toFixed(4));
+          loader.classList.toggle("is-loaded", progress >= 0.999);
+
+          if (progressNode) {
+            progressNode.textContent = `${String(percent).padStart(3, "0")}%`;
+          }
+        });
+      };
+
+      const queueClassicPortfolioProgressUpdate = () => {
+        if (classicPortfolioAnimationFrame) {
+          return;
+        }
+
+        classicPortfolioAnimationFrame = window.requestAnimationFrame(updateClassicPortfolioProgress);
+      };
+
+      classicPortfolioScrollHandler = queueClassicPortfolioProgressUpdate;
+      classicPortfolioResizeHandler = queueClassicPortfolioProgressUpdate;
+
+      window.addEventListener("scroll", classicPortfolioScrollHandler, { passive: true });
+      window.addEventListener("resize", classicPortfolioResizeHandler, { passive: true });
+
+      queueClassicPortfolioProgressUpdate();
+      window.setTimeout(queueClassicPortfolioProgressUpdate, 120);
+      window.setTimeout(queueClassicPortfolioProgressUpdate, 360);
+      waitForWindowLoad().then(queueClassicPortfolioProgressUpdate);
+    }
+
     function bindTitleGlitch() {
       const titleGlitch = document.querySelector(".title-glitch");
       if (!titleGlitch) return;
@@ -850,10 +932,12 @@
     }
 
     function prepareExploreActionIntro() {
-      const exploreAction = document.querySelector(".globe-action");
-      if (!exploreAction) return;
-      exploreAction.classList.add("globe-action-pending");
-      exploreAction.classList.remove("is-globe-action-visible");
+      const exploreActions = document.querySelectorAll(".globe-action");
+      if (!exploreActions.length) return;
+      exploreActions.forEach((exploreAction) => {
+        exploreAction.classList.add("globe-action-pending");
+        exploreAction.classList.remove("is-globe-action-visible");
+      });
     }
 
     function revealHomeTitleIntro() {
@@ -875,10 +959,12 @@
     }
 
     function revealExploreActionIntro() {
-      const exploreAction = document.querySelector(".globe-action");
-      if (!exploreAction) return;
-      exploreAction.classList.remove("globe-action-pending");
-      exploreAction.classList.add("is-globe-action-visible");
+      const exploreActions = document.querySelectorAll(".globe-action");
+      if (!exploreActions.length) return;
+      exploreActions.forEach((exploreAction) => {
+        exploreAction.classList.remove("globe-action-pending");
+        exploreAction.classList.add("is-globe-action-visible");
+      });
     }
 
     function bindContactForm() {
@@ -906,6 +992,7 @@
       clearFooterRevealHandlers();
       clearProjectRevealHandlers();
       clearAboutMarkerAlignmentHandlers();
+      clearClassicPortfolioScrollHandlers();
       teardownProjectScrollIndicator();
     }
 
@@ -921,6 +1008,7 @@
       revealExploreActionIntro,
       revealHomeTitleIntro,
       scheduleProjectScrollIndicatorSetup,
+      setupClassicPortfolioScroll,
       setupAboutFooterReveal,
       setupProjectFooterReveal,
       setupRevealBlocks,

@@ -703,6 +703,14 @@ body.project-page.menu-open.menu-closing::after {
   justify-items: stretch;
 }
 
+.project-venues-grid-logos-only {
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  justify-content: start;
+  justify-items: start;
+}
+
 .project-venue-mark {
   position: relative;
   display: grid;
@@ -720,6 +728,32 @@ body.project-page.menu-open.menu-closing::after {
   text-transform: uppercase;
   text-align: center;
   color: rgba(255, 255, 255, 0.92);
+}
+
+.project-venues-grid-logos-only .project-venue-mark {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.project-venue-mark-logo {
+  display: block;
+  width: min(100%, 460px);
+  height: 108px;
+  object-fit: contain;
+  object-position: center;
+  filter: brightness(0) invert(1) opacity(0.94);
+}
+
+.project-venue-mark-logo-fortunas-row {
+  width: min(100%, 460px);
+  height: 108px;
+}
+
+.project-venue-mark-logo-shelter {
+  width: min(100%, 460px);
+  height: 108px;
 }
 
 .project-framework-item h3 {
@@ -761,6 +795,54 @@ body.project-page.menu-open.menu-closing::after {
   width: var(--project-media-shell-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+.project-gallery-focus {
+  display: grid;
+  margin-bottom: 8px;
+}
+
+.project-gallery-focus-copy {
+  display: inline-grid;
+  justify-items: start;
+  gap: 12px;
+}
+
+.project-gallery-focus-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.84rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.project-gallery-focus-link::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.72;
+  transition: transform 220ms ease, opacity 220ms ease;
+  transform-origin: left center;
+}
+
+.project-gallery-focus-link:hover,
+.project-gallery-focus-link:focus-visible {
+  color: rgba(255, 255, 255, 1);
+}
+
+.project-gallery-focus-link:hover::after,
+.project-gallery-focus-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1.16);
+}
+
+.project-gallery-focus-link:focus-visible {
+  outline: none;
 }
 
 .project-gallery-card {
@@ -810,6 +892,39 @@ body.project-page.menu-open.menu-closing::after {
   max-width: 62ch;
   margin-bottom: var(--project-section-gap);
   color: rgba(255, 255, 255, 0.86);
+}
+
+.project-drinks-icons {
+  overflow: visible;
+}
+
+.project-drinks-icons .project-overview-lead {
+  max-width: 58ch;
+  margin-bottom: 22px;
+}
+
+.project-drinks-icons-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 38px;
+  align-items: flex-end;
+}
+
+.project-drinks-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--icon-width, 24) * 1.08px);
+  height: calc(var(--icon-height, 24) * 1.08px);
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.project-drinks-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1) opacity(0.9);
 }
 
 .project-hero-media-section.is-visible .project-glitch-layer,
@@ -910,6 +1025,8 @@ body.using-keyboard .project-explore-link:focus-visible {
 .project-stat,
 .project-detail-row,
 .project-venue-mark,
+.project-drinks-icon,
+.project-gallery-focus-link,
 .project-framework-item,
 .project-gallery-card,
 .project-outcomes-list p,
@@ -944,6 +1061,8 @@ body.using-keyboard .project-explore-link:focus-visible {
 .reveal-block.is-visible .project-stat,
 .reveal-block.is-visible .project-detail-row,
 .reveal-block.is-visible .project-venue-mark,
+.reveal-block.is-visible .project-drinks-icon,
+.reveal-block.is-visible .project-gallery-focus-link,
 .reveal-block.is-visible .project-framework-item,
 .reveal-block.is-visible .project-gallery-card,
 .reveal-block.is-visible .project-outcomes-list p,
@@ -958,6 +1077,7 @@ body.using-keyboard .project-explore-link:focus-visible {
 .reveal-block.is-visible .project-stat:nth-child(1),
 .reveal-block.is-visible .project-detail-row:nth-child(1),
 .reveal-block.is-visible .project-venue-mark:nth-child(1),
+.reveal-block.is-visible .project-drinks-icon:nth-child(1),
 .reveal-block.is-visible .project-framework-item:nth-child(1),
 .reveal-block.is-visible .project-gallery-card:nth-child(1),
 .reveal-block.is-visible .project-outcomes-list p:nth-child(1) {
@@ -967,6 +1087,7 @@ body.using-keyboard .project-explore-link:focus-visible {
 .reveal-block.is-visible .project-stat:nth-child(2),
 .reveal-block.is-visible .project-detail-row:nth-child(2),
 .reveal-block.is-visible .project-venue-mark:nth-child(2),
+.reveal-block.is-visible .project-drinks-icon:nth-child(2),
 .reveal-block.is-visible .project-framework-item:nth-child(2),
 .reveal-block.is-visible .project-gallery-card:nth-child(2),
 .reveal-block.is-visible .project-outcomes-list p:nth-child(2) {
@@ -976,6 +1097,7 @@ body.using-keyboard .project-explore-link:focus-visible {
 .reveal-block.is-visible .project-stat:nth-child(3),
 .reveal-block.is-visible .project-detail-row:nth-child(3),
 .reveal-block.is-visible .project-venue-mark:nth-child(3),
+.reveal-block.is-visible .project-drinks-icon:nth-child(3),
 .reveal-block.is-visible .project-framework-item:nth-child(3),
 .reveal-block.is-visible .project-gallery-card:nth-child(3),
 .reveal-block.is-visible .project-outcomes-list p:nth-child(3) {
@@ -984,6 +1106,7 @@ body.using-keyboard .project-explore-link:focus-visible {
 
 .reveal-block.is-visible .project-detail-row:nth-child(4),
 .reveal-block.is-visible .project-venue-mark:nth-child(4),
+.reveal-block.is-visible .project-drinks-icon:nth-child(4),
 .reveal-block.is-visible .project-explore-link {
   animation-delay: 360ms;
 }
@@ -1430,6 +1553,16 @@ body.project-page.project-footer-visible .bottom-logo.footer-mark-deferred .bott
   .project-venues-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .project-venues-grid-logos-only {
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: 28px;
+  }
+
+  .project-drinks-icon {
+    width: calc(var(--icon-width, 24) * 1.06px);
+    height: calc(var(--icon-height, 24) * 1.06px);
+  }
 }
 
 @media (max-width: 700px) {
@@ -1540,6 +1673,22 @@ body.project-page.project-footer-visible .bottom-logo.footer-mark-deferred .bott
     grid-template-columns: 1fr;
   }
 
+  .project-venues-grid-logos-only {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-items: start;
+  }
+
+  .project-drinks-icons-grid {
+    flex-wrap: wrap;
+    gap: 18px 20px;
+  }
+
+  .project-drinks-icon {
+    width: calc(var(--icon-width, 24) * 1.08px);
+    height: calc(var(--icon-height, 24) * 1.08px);
+  }
+
   .project-gallery-card-full {
     aspect-ratio: 5 / 4;
   }
@@ -1555,5 +1704,24 @@ body.project-page.project-footer-visible .bottom-logo.footer-mark-deferred .bott
   .project-venue-mark {
     min-height: 92px;
     padding: 18px 14px;
+  }
+
+  .project-venue-mark-logo {
+    width: min(100%, 320px);
+    height: 76px;
+  }
+
+  .project-gallery-focus-copy {
+    gap: 10px;
+  }
+
+  .project-gallery-focus-link {
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .project-gallery-focus-link::after {
+    width: 22px;
   }
 }
