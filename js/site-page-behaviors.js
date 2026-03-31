@@ -20,6 +20,8 @@
     let classicPortfolioScrollHandler = null;
     let classicPortfolioResizeHandler = null;
     let classicPortfolioAnimationFrame = 0;
+    let classicPortfolioProgrammaticScroll = false;
+    let classicPortfolioChaptersState = [];
     const markerMeasureCanvas = document.createElement("canvas");
     const markerMeasureContext = markerMeasureCanvas.getContext("2d");
 
@@ -84,6 +86,9 @@
         window.removeEventListener("resize", classicPortfolioResizeHandler);
         classicPortfolioResizeHandler = null;
       }
+
+      classicPortfolioProgrammaticScroll = false;
+      classicPortfolioChaptersState = [];
     }
 
     function clearProjectRevealHandlers() {
@@ -832,6 +837,29 @@
       waitForWindowLoad().then(runSetup);
     }
 
+    function scheduleClassicPortfolioScrollSetup() {
+      const runSetup = () => {
+        if (!document.body.classList.contains("portfolio-classic-page")) {
+          return;
+        }
+
+        setupClassicPortfolioScroll();
+      };
+
+      runSetup();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(runSetup);
+      });
+      window.setTimeout(runSetup, 120);
+      window.setTimeout(runSetup, 420);
+
+      if (pageStyleLink && !pageStyleLink.disabled) {
+        pageStyleLink.addEventListener("load", runSetup, { once: true });
+      }
+
+      waitForWindowLoad().then(runSetup);
+    }
+
     function setupClassicPortfolioScroll() {
       clearClassicPortfolioScrollHandlers();
 
@@ -839,56 +867,177 @@
         return;
       }
 
-      const loaders = Array.from(document.querySelectorAll("[data-classic-loader]"));
-      if (!loaders.length) {
+      const chapters = Array.from(document.querySelectorAll("[data-classic-chapter]"));
+      if (!chapters.length) {
         return;
       }
 
-      const updateClassicPortfolioProgress = () => {
+      const clampProgress = (value) => Math.min(Math.max(value, 0), 1);
+      const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+      const viewportHeight = () => window.innerHeight || document.documentElement.clientHeight || 1;
+      const getScrollTop = () => Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop || 0,
+        document.body.scrollTop || 0
+      );
+      const setScrollTop = (top, behavior = "auto") => {
+        classicPortfolioProgrammaticScroll = true;
+        window.scrollTo({ top, left: 0, behavior: prefersReducedMotion ? "auto" : behavior });
+        window.setTimeout(() => {
+          classicPortfolioProgrammaticScroll = false;
+        }, behavior === "smooth" && !prefersReducedMotion ? 520 : 0);
+      };
+
+      classicPortfolioChaptersState = chapters.map((chapter) => {
+        const loader = chapter.querySelector("[data-classic-loader]");
+        const pin = chapter.querySelector(".classic-chapter-pin");
+        const story = chapter.querySelector(".classic-story");
+        return {
+          chapter,
+          loader,
+          pin,
+          story,
+          progress: 0,
+          unlocked: false,
+          handoffDone: false
+        };
+      });
+
+      const syncChapterMetrics = () => {
+        classicPortfolioChaptersState.forEach((state) => {
+          const chapterTop = state.chapter.offsetTop;
+          const trackHeight = state.loader ? state.loader.offsetHeight : viewportHeight();
+          const loadDistance = Math.max(trackHeight - viewportHeight(), viewportHeight() * 0.82);
+          const storyOffset = state.story ? chapterTop + state.story.offsetTop : chapterTop + trackHeight;
+          state.start = chapterTop;
+          state.storyStart = Math.max(storyOffset - viewportHeight(), chapterTop);
+          state.loadDistance = loadDistance;
+          state.storyRevealEnd = state.storyStart + (viewportHeight() * 0.96);
+          state.storyEnd = state.chapter.offsetTop + state.chapter.offsetHeight;
+        });
+      };
+
+      const updateChapterVisuals = (state) => {
+        const chapter = state.chapter;
+        const loader = state.loader;
+        if (!chapter || !loader) return;
+
+        const progressNode = loader.querySelector("[data-classic-progress]");
+        const phaseNode = loader.querySelector("[data-classic-phase]");
+        const phaseCopies = Array.from(loader.querySelectorAll("[data-classic-phase-copy]"));
+        const scrollTop = getScrollTop();
+        const loadProgress = clampProgress((scrollTop - state.start) / Math.max(state.loadDistance, 1));
+        const unlockWindow = Math.max(viewportHeight() * 0.26, 1);
+        const unlockProgress = clampProgress(
+          (scrollTop - (state.storyStart - (viewportHeight() * 0.22))) / unlockWindow
+        );
+        const storyReveal = clampProgress(
+          (scrollTop - state.storyStart) / Math.max(state.storyRevealEnd - state.storyStart, 1)
+        );
+        const percent = Math.round(loadProgress * 100);
+        const phaseIndex = loadProgress < 0.22
+          ? 0
+          : loadProgress < 0.56
+            ? 1
+            : loadProgress < 0.92
+              ? 2
+              : loadProgress < 1
+              ? 3
+              : 4;
+        const activePhase = phaseCopies.find((node) => Number(node.getAttribute("data-classic-phase-copy")) === phaseIndex);
+        state.progress = loadProgress;
+        state.unlocked = loadProgress >= 0.999;
+        const isPinned = scrollTop >= state.start && scrollTop < state.storyStart;
+        const isPastPin = scrollTop >= state.storyStart;
+
+        chapter.style.setProperty("--classic-load-progress", loadProgress.toFixed(4));
+        chapter.style.setProperty("--classic-unlock-progress", unlockProgress.toFixed(4));
+        chapter.style.setProperty("--classic-story-reveal", storyReveal.toFixed(4));
+        loader.style.setProperty("--classic-load-progress", loadProgress.toFixed(4));
+        loader.style.setProperty("--classic-unlock-progress", unlockProgress.toFixed(4));
+        loader.style.setProperty("--classic-story-reveal", storyReveal.toFixed(4));
+
+        chapter.classList.toggle("is-loaded", state.unlocked);
+        chapter.classList.toggle("is-classic-pinned", isPinned);
+        chapter.classList.toggle("is-classic-after-pin", isPastPin);
+        loader.classList.toggle("is-loaded", state.unlocked);
+
+        if (progressNode) {
+          progressNode.textContent = `${String(percent).padStart(3, "0")}%`;
+        }
+
+        if (phaseNode && activePhase) {
+          phaseNode.textContent = activePhase.textContent || "";
+        }
+      };
+
+      const maybeAutoHandoff = (state, scrollTop, direction) => {
+        if (!state || classicPortfolioProgrammaticScroll || prefersReducedMotion || direction <= 0) {
+          return;
+        }
+
+        if (scrollTop <= state.start + 8) {
+          state.handoffDone = false;
+        }
+
+        if (state.handoffDone || !state.unlocked) {
+          return;
+        }
+
+        const lowerBound = state.storyStart - 48;
+        const upperBound = state.storyStart + 24;
+        if (scrollTop >= lowerBound && scrollTop <= upperBound) {
+          state.handoffDone = true;
+          setScrollTop(state.storyStart + Math.min(viewportHeight() * 0.18, 144), "smooth");
+        }
+      };
+
+      const updateClassicPortfolioProgress = (direction = 0) => {
         classicPortfolioAnimationFrame = 0;
 
         if (!document.body.classList.contains("portfolio-classic-page")) {
           return;
         }
 
-        const scrollTop = Math.max(
-          window.scrollY,
-          document.documentElement.scrollTop || 0,
-          document.body.scrollTop || 0
-        );
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-
-        loaders.forEach((loader) => {
-          const start = loader.offsetTop;
-          const end = start + Math.max(loader.offsetHeight - viewportHeight, 1);
-          const progress = Math.min(Math.max((scrollTop - start) / Math.max(end - start, 1), 0), 1);
-          const percent = Math.round(progress * 100);
-          const progressNode = loader.querySelector("[data-classic-progress]");
-
-          loader.style.setProperty("--classic-load-progress", progress.toFixed(4));
-          loader.classList.toggle("is-loaded", progress >= 0.999);
-
-          if (progressNode) {
-            progressNode.textContent = `${String(percent).padStart(3, "0")}%`;
-          }
+        syncChapterMetrics();
+        const scrollTop = getScrollTop();
+        classicPortfolioChaptersState.forEach((state) => {
+          updateChapterVisuals(state);
+          maybeAutoHandoff(state, scrollTop, direction);
         });
       };
 
-      const queueClassicPortfolioProgressUpdate = () => {
+      const queueClassicPortfolioProgressUpdate = (direction = 0) => {
         if (classicPortfolioAnimationFrame) {
           return;
         }
 
-        classicPortfolioAnimationFrame = window.requestAnimationFrame(updateClassicPortfolioProgress);
+        classicPortfolioAnimationFrame = window.requestAnimationFrame(() => {
+          updateClassicPortfolioProgress(direction);
+        });
       };
 
-      classicPortfolioScrollHandler = queueClassicPortfolioProgressUpdate;
-      classicPortfolioResizeHandler = queueClassicPortfolioProgressUpdate;
+      let lastScrollTop = getScrollTop();
+      classicPortfolioScrollHandler = () => {
+        const nextScrollTop = getScrollTop();
+        const direction = nextScrollTop > lastScrollTop
+          ? 1
+          : nextScrollTop < lastScrollTop
+            ? -1
+            : 0;
+        lastScrollTop = nextScrollTop;
+        queueClassicPortfolioProgressUpdate(direction);
+      };
+      classicPortfolioResizeHandler = () => {
+        syncChapterMetrics();
+        queueClassicPortfolioProgressUpdate();
+      };
 
       window.addEventListener("scroll", classicPortfolioScrollHandler, { passive: true });
       window.addEventListener("resize", classicPortfolioResizeHandler, { passive: true });
 
-      queueClassicPortfolioProgressUpdate();
+      syncChapterMetrics();
+      updateClassicPortfolioProgress();
       window.setTimeout(queueClassicPortfolioProgressUpdate, 120);
       window.setTimeout(queueClassicPortfolioProgressUpdate, 360);
       waitForWindowLoad().then(queueClassicPortfolioProgressUpdate);
@@ -1007,6 +1156,7 @@
       resetRouteBehaviors,
       revealExploreActionIntro,
       revealHomeTitleIntro,
+      scheduleClassicPortfolioScrollSetup,
       scheduleProjectScrollIndicatorSetup,
       setupClassicPortfolioScroll,
       setupAboutFooterReveal,

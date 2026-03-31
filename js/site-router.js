@@ -34,8 +34,8 @@
     prepareHomeTitleIntro,
     preparePageShellIntro,
     resetRouteBehaviors,
+    scheduleClassicPortfolioScrollSetup,
     scheduleProjectScrollIndicatorSetup,
-    setupClassicPortfolioScroll,
     setupAboutFooterReveal,
     setupProjectFooterReveal,
     setupRevealBlocks,
@@ -322,7 +322,7 @@
           configureExternalLinks(".contact-social-link[href]", "Profile link coming soon");
         }
         if (route.id === "portfolioClassic") {
-          setupClassicPortfolioScroll();
+          scheduleClassicPortfolioScrollSetup();
         }
       }
 

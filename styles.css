@@ -4,6 +4,7 @@
   --text: rgba(255, 255, 255, 0.92);
   --text-dim: rgba(255, 255, 255, 0.68);
   --font: "Barlow Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  --shell-max-width: 1680px;
   --viewport-height: 100vh;
   --grid-float-distance: calc(var(--viewport-height) - 32px);
   --menu-scan-distance: var(--viewport-height);
@@ -296,7 +297,7 @@ body.home-grid-transition .grid-lines {
 .grid-lines {
   position: absolute;
   inset: 0;
-  width: min(100%, 1440px);
+  width: min(100%, var(--shell-max-width));
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -385,7 +386,7 @@ body.home-grid-transition .grid-lines {
 
 .ui-shell {
   position: relative;
-  width: min(100%, 1440px);
+  width: min(100%, var(--shell-max-width));
   height: 100%;
   margin: 0 auto;
   pointer-events: none;
@@ -1169,12 +1170,20 @@ body.menu-closing.menu-home-reveal .hero-subtitle {
 }
 
 .globe-action-secondary {
-  color: rgba(255, 255, 255, 0.76);
-  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.14em;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.16));
 }
 
 .globe-action-secondary .globe-action-line {
-  background: rgba(255, 255, 255, 0.72);
+  left: auto;
+  right: 0;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.globe-action-secondary:hover .globe-action-line,
+.globe-action-secondary:focus-visible .globe-action-line {
+  width: 100%;
 }
 
 .globe-action:hover .globe-action-line,
@@ -1279,7 +1288,7 @@ body.using-keyboard .globe-action:focus-visible {
   position: fixed;
   top: 0;
   right: 0;
-  left: calc(50% + min(100vw, 1440px) * 0.125);
+  left: calc(50% + min(100vw, var(--shell-max-width)) * 0.125);
   height: var(--viewport-height);
   opacity: 0;
   visibility: hidden;

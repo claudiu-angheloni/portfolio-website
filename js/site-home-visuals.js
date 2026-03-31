@@ -54,6 +54,8 @@
       const baseSunRigPosition = new THREE.Vector3(0, 0.78, 0);
       const focusSunRigPosition = new THREE.Vector3(3.18, 0.8, 0);
       const focusSunScale = 0.72;
+      const BASE_COMPOSITION_WIDTH = 1440;
+      const MAX_COMPOSITION_WIDTH = 1680;
     
       const rotationHint = document.createElement("div");
       rotationHint.setAttribute("aria-hidden", "true");
@@ -366,12 +368,18 @@
       let homeTitleRevealThreshold = 0.14;
       let exploreActionPresence = 0;
       let exploreActionPresenceTarget = 0;
+      let classicActionPresence = 0;
+      let classicActionPresenceTarget = 0;
       let exploreActionMenuReveal = 1;
       let orbitMarkerPhase = Math.PI;
       let exploreActionLocked = false;
       let exploreActionLockPending = false;
       let exploreActionLockedX = 0;
       let exploreActionLockedY = 0;
+      let classicActionLocked = false;
+      let classicActionLockPending = false;
+      let classicActionLockedX = 0;
+      let classicActionLockedY = 0;
       let animationFrameId = 0;
       let dragTrackingBound = false;
       let hoveredPin = null;
@@ -1020,7 +1028,31 @@
         starsContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
         updateProjectPanelScrollIndicator();
       }
-    
+
+      function getCompositionWidth() {
+        return Math.min(window.innerWidth, MAX_COMPOSITION_WIDTH);
+      }
+
+      function getCompositionExpansionProgress() {
+        return clamp(
+          (getCompositionWidth() - BASE_COMPOSITION_WIDTH) / (MAX_COMPOSITION_WIDTH - BASE_COMPOSITION_WIDTH),
+          0,
+          1
+        );
+      }
+
+      function getResponsiveFocusState() {
+        const compositionExpansion = getCompositionExpansionProgress();
+
+        return {
+          globeRigX: focusGlobeRigPosition.x,
+          globeRigY: lerp(focusGlobeRigPosition.y, 0.86, compositionExpansion),
+          cameraZ: lerp(focusCameraPosition.z, 10.9, compositionExpansion),
+          sunRigX: focusSunRigPosition.x,
+          sunRigY: lerp(focusSunRigPosition.y, 0.82, compositionExpansion)
+        };
+      }
+
       function drawStars(time) {
         const width = window.innerWidth;
         const height = window.innerHeight;
@@ -1168,11 +1200,28 @@
         classicAction.style.pointerEvents = active ? "auto" : "none";
         if (active) {
           exploreActionPresenceTarget = 0;
+          classicActionPresenceTarget = 0;
+          classicActionLocked = false;
+          classicActionLockPending = false;
         }
         if (!active) {
           exploreActionLocked = false;
           exploreActionLockPending = false;
+          classicActionPresenceTarget = 0;
+          classicActionLocked = false;
+          classicActionLockPending = false;
         }
+      }
+
+      function getClassicActionAnchor() {
+        const gridWidth = getCompositionWidth();
+        const gridLeft = (window.innerWidth - gridWidth) * 0.5;
+
+        return {
+          x: gridLeft + (gridWidth * 0.778),
+          left: gridLeft,
+          right: gridLeft + gridWidth
+        };
       }
     
       function updateRotationHint() {
@@ -1625,15 +1674,16 @@
         const narrowViewport = window.innerWidth <= 700;
         const actionY = centerY + projectedRadius + (narrowViewport ? 18 : 40);
         const actionPresence = easeInOut(exploreActionPresence);
+        const classicPresence = easeInOut(classicActionPresence);
         const exploreOpacity = isVisible
           ? Math.max(0, 0.92 - focusEase * 1.25) * actionPresence * exploreActionMenuReveal
           : 0;
         const classicOpacity = isVisible
-          ? Math.max(0, Math.min(focusEase * 1.35, 0.94)) * exploreActionMenuReveal
+          ? 0.92 * classicPresence * exploreActionMenuReveal
           : 0;
         const actionOffsetX = (actionPresence - 1) * 28 + (exploreActionMenuReveal - 1) * 18;
-        const classicOffsetX = (1 - focusEase) * 22 + (exploreActionMenuReveal - 1) * 18;
-        const classicOffsetY = (1 - focusEase) * 14;
+        const classicOffsetX = (1 - classicPresence) * 28 + (exploreActionMenuReveal - 1) * 18;
+        const classicOffsetY = 0;
         if (exploreActionLockPending) {
           exploreActionLockedX = centerX;
           exploreActionLockedY = actionY;
@@ -1652,9 +1702,20 @@
         const secondaryBounds = classicAction.getBoundingClientRect();
         const primaryWidth = primaryBounds.width || 154;
         const secondaryWidth = secondaryBounds.width || 142;
-        const classicTargetX = centerX + projectedRadius * (narrowViewport ? 0.42 : 0.72);
-        const classicTargetYBase = centerY + projectedRadius * (narrowViewport ? 0.54 : 0.76);
+        const classicAnchor = getClassicActionAnchor();
+        const classicTargetX = narrowViewport
+          ? centerX + projectedRadius * 0.44
+          : classicAnchor.x;
+        const classicTargetYBase = narrowViewport
+          ? centerY + projectedRadius * 0.62
+          : centerY + projectedRadius * 0.7;
         const clampedClassicTop = Math.min(classicTargetYBase, window.innerHeight - (narrowViewport ? 86 : 112));
+        if (classicActionLockPending) {
+          classicActionLockedX = classicTargetX;
+          classicActionLockedY = clampedClassicTop;
+          classicActionLocked = true;
+          classicActionLockPending = false;
+        }
 
         function placeAction(actionNode, targetX, targetY, width, translateX, translateY, opacity, isActive) {
           const actionHalfWidth = width * 0.5;
@@ -1688,13 +1749,13 @@
         );
         placeAction(
           classicAction,
-          classicTargetX,
-          clampedClassicTop,
+          classicActionLocked ? classicActionLockedX : classicTargetX,
+          classicActionLocked ? classicActionLockedY : clampedClassicTop,
           secondaryWidth,
           classicOffsetX,
           classicOffsetY,
           classicOpacity,
-          projectsFocusActive && focusEase > 0.56
+          projectsFocusActive && classicPresence > 0.96
         );
       }
     
@@ -1705,6 +1766,7 @@
         if (!isVisible || document.hidden) return;
         const reducedMotion = prefersReducedMotion();
         const focusTarget = projectsFocusActive ? 1 : 0;
+        const responsiveFocusState = getResponsiveFocusState();
         const menuActionTarget = document.body.classList.contains("menu-open")
           ? (document.body.classList.contains("menu-home-reveal") ? 1 : 0)
           : 1;
@@ -1722,11 +1784,20 @@
         }
         if (reducedMotion) {
           exploreActionPresence = exploreActionPresenceTarget;
+          classicActionPresence = classicActionPresenceTarget;
         } else {
           exploreActionPresence += (exploreActionPresenceTarget - exploreActionPresence) * Math.min(deltaSeconds * 4.6, 1);
+          classicActionPresence += (classicActionPresenceTarget - classicActionPresence) * Math.min(deltaSeconds * 4.6, 1);
         }
         const focusEase = easeInOut(projectsFocusProgress);
-    
+        const classicRevealReady = projectsFocusActive
+          && projectsFocusDelayRemaining <= 0
+          && focusEase >= (reducedMotion ? 0.992 : 0.975);
+        if (classicRevealReady && !classicActionPresenceTarget && !classicActionLocked) {
+          classicActionLockPending = true;
+        }
+        classicActionPresenceTarget = classicRevealReady ? 1 : 0;
+
         drawStars(reducedMotion ? 0 : time);
     
         const sunPulse = reducedMotion
@@ -1764,19 +1835,19 @@
           drag.currentY += (drag.targetY - drag.currentY) * 0.05;
         }
         globeRig.position.set(
-          lerp(baseGlobeRigPosition.x, focusGlobeRigPosition.x, focusEase),
-          lerp(baseGlobeRigPosition.y, focusGlobeRigPosition.y, focusEase),
+          lerp(baseGlobeRigPosition.x, responsiveFocusState.globeRigX, focusEase),
+          lerp(baseGlobeRigPosition.y, responsiveFocusState.globeRigY, focusEase),
           lerp(baseGlobeRigPosition.z, focusGlobeRigPosition.z, focusEase)
         );
         sunRig.position.set(
-          lerp(baseSunRigPosition.x, focusSunRigPosition.x, focusEase),
-          lerp(baseSunRigPosition.y, focusSunRigPosition.y, focusEase),
+          lerp(baseSunRigPosition.x, responsiveFocusState.sunRigX, focusEase),
+          lerp(baseSunRigPosition.y, responsiveFocusState.sunRigY, focusEase),
           lerp(baseSunRigPosition.z, focusSunRigPosition.z, focusEase)
         );
         camera.position.set(
           lerp(baseCameraPosition.x, focusCameraPosition.x, focusEase),
           lerp(baseCameraPosition.y, focusCameraPosition.y, focusEase),
-          lerp(baseCameraPosition.z, focusCameraPosition.z, focusEase)
+          lerp(baseCameraPosition.z, responsiveFocusState.cameraZ, focusEase)
         );
         stage.position.y = reducedMotion
           ? -0.78
@@ -1895,7 +1966,7 @@
         });
       });
       classicAction.addEventListener("click", () => {
-        if (projectsFocusActive) return;
+        if (!projectsFocusActive) return;
         navigateToRoute(normalizePath("/portfolio-classic.html"));
       });
       projectPanelClose.addEventListener("click", () => {
@@ -2026,8 +2097,12 @@
             document.body.classList.add("home-returning-from-focus");
             exploreActionPresence = 0;
             exploreActionPresenceTarget = 0;
+            classicActionPresence = 0;
+            classicActionPresenceTarget = 0;
             exploreActionLocked = false;
             exploreActionLockPending = false;
+            classicActionLocked = false;
+            classicActionLockPending = false;
             setProjectsFocus(false, {
               motionDelay: 0,
               titleExit: false,
@@ -2049,6 +2124,7 @@
             isVisible = active || keepStars;
             if (active) {
               if (animateFromFocus) {
+                const responsiveFocusState = getResponsiveFocusState();
                 document.body.classList.remove("home-returning-from-focus");
                 projectsFocusProgress = 1;
                 projectsFocusDelayRemaining = 0;
@@ -2058,11 +2134,27 @@
                 });
                 exploreActionPresence = 0;
                 exploreActionPresenceTarget = 0;
+                classicActionPresence = 0;
+                classicActionPresenceTarget = 0;
                 exploreActionLocked = false;
                 exploreActionLockPending = false;
-                globeRig.position.copy(focusGlobeRigPosition);
-                sunRig.position.copy(focusSunRigPosition);
-                camera.position.copy(focusCameraPosition);
+                classicActionLocked = false;
+                classicActionLockPending = false;
+                globeRig.position.set(
+                  responsiveFocusState.globeRigX,
+                  responsiveFocusState.globeRigY,
+                  focusGlobeRigPosition.z
+                );
+                sunRig.position.set(
+                  responsiveFocusState.sunRigX,
+                  responsiveFocusState.sunRigY,
+                  focusSunRigPosition.z
+                );
+                camera.position.set(
+                  focusCameraPosition.x,
+                  focusCameraPosition.y,
+                  responsiveFocusState.cameraZ
+                );
                 document.body.classList.remove("home-projects-focus");
                 closeSelectedPin({ restoreHover: false, instant: true });
                 homeTitleRevealPending = true;
@@ -2079,8 +2171,12 @@
                 prepareExploreActionIntro();
                 exploreActionPresence = 0;
                 exploreActionPresenceTarget = 1;
+                classicActionPresence = 0;
+                classicActionPresenceTarget = 0;
                 exploreActionLocked = false;
                 exploreActionLockPending = false;
+                classicActionLocked = false;
+                classicActionLockPending = false;
                 requestAnimationFrame(() => {
                   revealExploreActionIntro();
                   updateExploreAction(easeInOut(projectsFocusProgress));
@@ -2093,8 +2189,12 @@
               homeTitleRevealPending = false;
               exploreActionPresence = 0;
               exploreActionPresenceTarget = 0;
+              classicActionPresence = 0;
+              classicActionPresenceTarget = 0;
               exploreActionLocked = false;
               exploreActionLockPending = false;
+              classicActionLocked = false;
+              classicActionLockPending = false;
             }
             const starsVisible = active || keepStars;
             starsCanvas.style.opacity = starsVisible ? "1" : "0";
